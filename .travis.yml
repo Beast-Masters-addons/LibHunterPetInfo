@@ -1,0 +1,31 @@
+language: minimal
+
+addons:
+  apt:
+    packages:
+      - luarocks
+
+before_install:
+  - sudo luarocks install luacheck
+  - sudo luarocks install luaunit
+  - sudo luarocks install luacov
+
+before_script:
+  - luacheck addon --no-color -q
+  - luacheck data --no-color -q
+  - luacheck tests --no-color -q
+
+script:
+  - cd tests
+  - lua -lluacov test_PetInfo.lua
+  - lua -lluacov test_FHHcompat.lua
+
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
+  - cd $TRAVIS_BUILD_DIR
+  - curl -s https://raw.githubusercontent.com/BigWigsMods/packager/master/release.sh | bash -s -- -g 1.13.2
+
+notifications:
+  email:
+    on_success: never
+    on_failure: always

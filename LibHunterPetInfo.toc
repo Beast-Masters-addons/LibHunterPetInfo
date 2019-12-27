@@ -1,0 +1,14 @@
+## Interface: 11303
+## Version: @project-version@
+## Author: datagutten
+## Title: Lib: Hunter Pet Info
+## Notes: A library to get information about Hunter pets and their spells
+
+addon\LibHunterPetInfo.lua
+
+data\AbilityNPC.lua
+data\PetFamilies.lua
+data\PetInfo.lua
+data\Zones.lua
+
+addon\FHH_compat.lua
