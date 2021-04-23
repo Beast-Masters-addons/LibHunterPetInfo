@@ -2,5 +2,6 @@
 release
 .release
 *.out
+build_utils
 
 __pycache__

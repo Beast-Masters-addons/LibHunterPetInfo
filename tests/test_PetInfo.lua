@@ -4,11 +4,7 @@ local lu = require('luaunit')
 --loadfile('Util.lua')()
 --loadfile('../libs/LibStub/LibStub.lua')()
 _G['PetInfo'] = {}
-loadfile('../addon/LibHunterPetInfo.lua')()
-loadfile('../data/PetInfo.lua')()
-loadfile('../data/PetFamilies.lua')()
-loadfile('../data/Zones.lua')()
-loadfile('../data/AbilityNPC.lua')()
+loadfile('build_utils/utils/load_toc.lua')('../LibHunterPetInfo.toc')
 
 
 

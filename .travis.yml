@@ -14,6 +14,7 @@ before_script:
   - luacheck addon --no-color -q
   - luacheck data --no-color -q
   - luacheck tests --no-color -q
+  - git clone https://github.com/Beast-Masters-addons/build_utils tests/build_utils
 
 script:
   - cd tests
