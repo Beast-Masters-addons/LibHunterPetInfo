@@ -1,11 +1,12 @@
 local frame = _G.CreateFrame("FRAME") -- Need a frame to respond to events
 frame:RegisterEvent("ADDON_LOADED") -- Fired when saved variables are loaded
 local beast_lore_target
+local addonName = ...
 
 -- Event handler
 function frame:OnEvent(event, ...)
     local arg1 = ...
-    if event == "ADDON_LOADED" and arg1 == "LibHunterPetInfo" then
+    if event == "ADDON_LOADED" and arg1 == addonName then
         --@debug@
         print("LibHunterPetInfo loaded")
         --@end-debug@
