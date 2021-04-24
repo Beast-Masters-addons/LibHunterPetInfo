@@ -25,6 +25,8 @@ before_script:
   - luacheck data --no-color -q
   - luacheck tests --no-color -q
   - git clone https://github.com/Beast-Masters-addons/build_utils tests/build_utils
+  - curl -s https://raw.githubusercontent.com/BigWigsMods/packager/master/release.sh | bash -s -- -d -z -g $GAME_VERSION
+  - mv .release/LibHunterPetInfo/libs .
 
 script:
   - cd tests
