@@ -17,6 +17,8 @@ def clean_json(json_string):
     # Fix unquoted keys
     # json_string = re.sub(r',(\s*)([^"]+?):', r',\1"\2":', json_string)
     json_string = re.sub(r',(\s*)([^"]+?):(\s?(?:\[.+?\]|["a-zA-Z0-9]+))', r',\1"\2":\3', json_string)
+    # Pattern matches too much when two keys missing quotes
+    json_string = re.sub(r',(\s*)([^"]+?):(\s?(?:\[.+?\]|["a-zA-Z0-9]+))', r',\1"\2":\3', json_string)
     # json = str_replace("'", '',json) # Remove single quotes
     json_string = re.sub(r'/"([0-9]+\],)(pctstack":{)([0-9]+)/', '$1"$2"$3"', json_string)
     return json_string
@@ -34,34 +36,3 @@ def get_list_view(response, list_id):
         raise e
 
 
-def build_lua_table(source):
-    table = '{\n'
-    for key, value in source.items():
-        if type(key) == int:
-            key = '[%d]' % key
-
-        table += '\t'
-        if type(value) == str:
-            table += '%s="%s"' % (key, value)
-        elif type(value) == int:
-            table += '%s=%d' % (key, value)
-        elif type(value) == list:
-            table += '%s = {' % key
-            for item in value:
-                if type(item) == str:
-                    table += '"%s",' % item
-                elif type(item) == int:
-                    table += '%d,' % item
-                else:
-                    raise Exception('Unhandled type: ' + type(item))
-            table = table[:-1]
-            table += '}'
-        elif type(value) == dict:
-            table += '%s =\n' % key
-            table += build_lua_table(value)
-        else:
-            raise Exception('Unhandled type: %s' % type(value))
-
-        table += ',\n'
-    table += '}'
-    return table
