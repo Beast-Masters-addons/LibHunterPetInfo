@@ -6,4 +6,8 @@
 ## Notes: A library to get information about Hunter pets and their spells
 ## SavedVariables: BeastLoreData
 
+#@no-lib-strip@
+libs\LibStub\LibStub.lua
+libs\BM-utils\lib.xml
+#@end-no-lib-strip@
 lib.xml

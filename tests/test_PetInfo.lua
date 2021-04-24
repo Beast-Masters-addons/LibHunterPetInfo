@@ -4,9 +4,7 @@ local lu = require('luaunit')
 --loadfile('Util.lua')()
 --loadfile('../libs/LibStub/LibStub.lua')()
 _G['PetInfo'] = {}
-loadfile('build_utils/utils/load_toc.lua')('../LibHunterPetInfo.toc')
-
-
+loadfile('build_utils/utils/load_toc.lua')('../LibHunterPetInfo.toc', { 'BeastLoreEvents.lua' })
 
 --print(_G['PetInfo']['Pets']['Snow Leopard']['family'])
 
