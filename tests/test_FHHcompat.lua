@@ -1,7 +1,7 @@
 local lu = require('luaunit')
 
 _G['PetInfo'] = {}
-loadfile('build_utils/utils/load_toc.lua')('../LibHunterPetInfo.toc', { 'BeastLoreEvents.lua' })
+loadfile('../scripts/build_utils/utils/load_toc.lua')('../LibHunterPetInfo.toc', { 'BeastLoreEvents.lua' })
 
 _G['test'] = {}
 local test = _G['test']
