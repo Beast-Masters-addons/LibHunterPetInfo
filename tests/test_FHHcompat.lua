@@ -1,15 +1,7 @@
 local lu = require('luaunit')
 
---loadfile('wow_functions.lua')()
---loadfile('Util.lua')()
---loadfile('../libs/LibStub/LibStub.lua')()
 _G['PetInfo'] = {}
-loadfile('../addon/LibHunterPetInfo.lua')()
-loadfile('../data/PetInfo.lua')()
-loadfile('../data/PetFamilies.lua')()
-loadfile('../data/Zones.lua')()
-loadfile('../data/AbilityNPC.lua')()
-loadfile('../addon/FHH_compat.lua')()
+loadfile('build_utils/utils/load_toc.lua')('../LibHunterPetInfo.toc', { 'BeastLoreEvents.lua' })
 
 _G['test'] = {}
 local test = _G['test']
