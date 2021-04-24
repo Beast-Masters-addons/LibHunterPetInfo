@@ -16,11 +16,11 @@ def file(name):
 def clean_json(json_string):
     # Fix unquoted keys
     # json_string = re.sub(r',(\s*)([^"]+?):', r',\1"\2":', json_string)
-    json_string = re.sub(r',(\s*)([^"]+?):(\s?(?:\[.+?\]|["a-zA-Z0-9]+))', r',\1"\2":\3', json_string)
+    json_string = re.sub(r',(\s*)([^"]+?):(\s?(?:\[.+?]|["a-zA-Z0-9]+))', r',\1"\2":\3', json_string)
     # Pattern matches too much when two keys missing quotes
-    json_string = re.sub(r',(\s*)([^"]+?):(\s?(?:\[.+?\]|["a-zA-Z0-9]+))', r',\1"\2":\3', json_string)
+    json_string = re.sub(r',(\s*)([^"]+?):(\s?(?:\[.+?]|["a-zA-Z0-9]+))', r',\1"\2":\3', json_string)
     # json = str_replace("'", '',json) # Remove single quotes
-    json_string = re.sub(r'/"([0-9]+\],)(pctstack":{)([0-9]+)/', '$1"$2"$3"', json_string)
+    json_string = re.sub(r'/"([0-9]+],)(pctstack":{)([0-9]+)/', '$1"$2"$3"', json_string)
     return json_string
 
 
