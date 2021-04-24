@@ -3,11 +3,20 @@ _G['FHH_compat'] = {}
 local FHH_compat = _G['FHH_compat']
 local LibPet = _G['LibPet']
 
-function FHH_compat.GetPetInfo(_, petName)
+function FHH_compat.GetPetInfo(_, petName, noSkills)
 	local pet = LibPet:petInfo(petName)
 	local family = LibPet:familyName(pet['family'])
 	local zone = LibPet:zoneNameFromId(pet['location'])
 	local skills = LibPet:petSkills(pet['npc'])
+	if not skills and _G['BeastLoreData'][petName] then
+		local skills_lore = _G['BeastLoreData'][petName]
+		--@debug@
+		print('Missing data for '.. petName ..'found in BeastLore', skills_lore[1]['name'])
+		--@end-debug@
+	end
+	if not skills and not noSkills then
+		return
+	end
 
 	local info = {f=family, z=zone, min=pet['min'], max=pet['max']}
 	for skill, rank in pairs(skills) do
@@ -26,8 +35,12 @@ end
 
 function FHH_compat:BuildBeastInfo()
 	local pets = {}
+	local info
 	for petName, _ in pairs(_G['PetInfo']['Pets']) do
-		pets[petName] = self:GetPetInfo(petName)
+		info = self:GetPetInfo(petName)
+		if info then
+			pets[petName] = info
+		end
 	end
 	return pets
 end

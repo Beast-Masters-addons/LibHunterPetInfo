@@ -4,5 +4,6 @@
 ## Author: datagutten
 ## Title: Lib: Hunter Pet Info
 ## Notes: A library to get information about Hunter pets and their spells
+## SavedVariables: BeastLoreData
 
 lib.xml
