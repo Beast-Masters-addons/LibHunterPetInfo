@@ -1,9 +1,8 @@
 import sys
 
+import BuildData
 import wowhead
-from build_utils import build_lua_table
 
-file = open('../data/PetFamilies.lua', 'w+')
 try:
     response = wowhead.get('https://%s.wowhead.com/hunter-pets' % sys.argv[1])
 except IndexError:
@@ -20,5 +19,4 @@ for family in families:
     family_ids.append(family['id'])
     data_dict[family['id']] = family
 
-file.write(build_lua_table(data_dict, "_G['PetInfo']['Families']"))
-file.close()
+BuildData.save(data_dict, 'PetFamilies')
