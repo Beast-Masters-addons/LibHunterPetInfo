@@ -38,10 +38,8 @@ function LibPet:zoneNameFromId(zoneId)
 	return self:zoneInfo(zoneId)['name']
 end
 
-function LibPet.petSkills(_, npcId)
-	if not npcId then
-		error('Invalid NPC id: '..npcId)
-	end
+function LibPet.petSkills(npcId)
+	assert(npcId, 'Missing NPC id')
 	local skills = {}
 	for skillKey, skill in pairs(_G['PetInfo']['AbilityNPC']) do
 		for rankKey, npcList in ipairs(skill) do

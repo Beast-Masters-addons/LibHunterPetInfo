@@ -7,7 +7,7 @@ function FHH_compat.GetPetInfo(_, petName, noSkills)
 	local pet = LibPet:petInfo(petName)
 	local family = LibPet:familyName(pet['family'])
 	local zone = LibPet:zoneNameFromId(pet['location'])
-	local skills = LibPet:petSkills(pet['npc'])
+	local skills = LibPet.petSkills(pet['npc'])
 	if not skills and _G['BeastLoreData'][petName] then
 		local skills_lore = _G['BeastLoreData'][petName]
 		--@debug@

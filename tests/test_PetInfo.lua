@@ -31,7 +31,7 @@ function test.testZone()
 end
 
 function test.testPetSkills()
-	local skills = LibPet:petSkills(2731)
+	local skills = LibPet.petSkills(2731)
 	lu.assertEquals(skills, {cower=4, prowl=1})
 end
 
