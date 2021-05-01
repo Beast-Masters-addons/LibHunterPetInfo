@@ -2,7 +2,7 @@ import json
 import os
 import re
 
-from scripts import Petopia
+from Petopia import Petopia
 from utils.Wowhead import Wowhead
 
 
