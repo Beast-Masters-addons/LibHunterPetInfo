@@ -5,10 +5,11 @@ jobs:
     - name: 'Classic'
       install:
         - export GAME_VERSION="classic"
-
+        - export WOWHEAD_DOMAIN="classic"
     - name: 'TBC'
       install:
         - export GAME_VERSION="bc"
+        - export WOWHEAD_DOMAIN="tbc"
 
 addons:
   apt:
