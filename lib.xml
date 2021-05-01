@@ -9,7 +9,7 @@
     <Script file="data\PetSpellIconTextures.lua"/>
     <Script file="data\ZoneInfo.lua"/>
     <Script file="data\ZonesNameToId.lua"/>
-    <Script file="data\PetTables.lua"/>
+    <Script file="addon\PetDataTables.lua"/>
     <Script file="addon\CurrentPet.lua"/>
     <Script file="addon\PetSpells.lua"/>
     <Script file="addon\BeastLore.lua"/>
@@ -17,6 +17,5 @@
     <Script file="addon\LibHunterPetInfo.lua"/>
     <Script file="data\PetInfo.lua"/>
     <Script file="data\PetFamilies.lua"/>
-    <Script file="data\AbilityNPC.lua"/>
     <Script file="addon\FHH_compat.lua"/>
 </Ui>
