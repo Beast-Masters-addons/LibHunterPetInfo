@@ -32,7 +32,17 @@ end
 
 function test.testPetSkills()
 	local skills = LibPet.petSkills(2731)
-	lu.assertEquals(skills, {cower=4, prowl=1})
+	lu.assertEquals(skills, {ability_druid_cower=4, ability_druid_supriseattack=1})
+end
+
+function test.testPetNoSkills()
+	local skills = LibPet.petSkills(686)
+	lu.assertEquals(skills, nil)
+end
+
+function test.testZoneNoPets()
+	local pets = LibPet:zonePets(722)
+	lu.assertEquals(pets, nil)
 end
 
 
