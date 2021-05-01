@@ -1,7 +1,7 @@
 _G['LibPet'] = {}
 local LibPet = _G['LibPet']
 
-function LibPet.getInfo(_, tableName, key)
+function LibPet.getInfo(tableName, key)
 	if not key then
 		error('Invalid key')
 	end
@@ -17,23 +17,23 @@ function LibPet.getInfo(_, tableName, key)
 end
 
 function LibPet:familyInfo(familyId)
-	return self:getInfo('Families', familyId)
+	return self.getInfo('Families', familyId)
 end
 
 function LibPet:familyName(familyId)
-	return self:familyInfo(familyId)['name']
+	return self.familyInfo(familyId)['name']
 end
 
 function LibPet:petInfo(beastName)
-	return self:getInfo('Pets', beastName)
+	return self.getInfo('Pets', beastName)
 end
 
 function LibPet:petProperties(id)
-    return self:getInfo('PetProperties', id)
+    return self.getInfo('PetProperties', id)
 end
 
 function LibPet:zoneInfo(zoneId)
-	return self:getInfo('Zones', zoneId)
+	return self.getInfo('Zones', zoneId)
 end
 
 function LibPet:zoneNameFromId(zoneId)
@@ -55,7 +55,7 @@ function LibPet.zonePets(zoneId)
 end
 
 function LibPet:getZoneByName(zoneName)
-    return self:getInfo('ZonesNameToId', zoneName)
+    return self.getInfo('ZonesNameToId', zoneName)
 end
 
 function LibPet.petSkills(npcId)
