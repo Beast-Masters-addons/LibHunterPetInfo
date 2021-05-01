@@ -31,7 +31,7 @@ before_script:
   - mv .release/LibHunterPetInfo/libs .
   - pip install -r scripts/requirements.txt
   - python scripts/BuildPetData.py
-  - luacheck data --no-color -q
+  - luacheck data --no-color -q --no-max-code-line-length
 
 script:
   - cd tests
