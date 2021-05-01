@@ -1,5 +1,3 @@
-_G['PetInfo'] = {}
---PetInfo = {}
 _G['LibPet'] = {}
 local LibPet = _G['LibPet']
 
