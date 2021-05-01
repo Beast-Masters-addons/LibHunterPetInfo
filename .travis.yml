@@ -28,6 +28,7 @@ before_script:
   - git clone https://github.com/Beast-Masters-addons/build_utils scripts/build_utils
   - curl -s https://raw.githubusercontent.com/BigWigsMods/packager/master/release.sh | bash -s -- -d -z -g $GAME_VERSION
   - mv .release/LibHunterPetInfo/libs .
+  - python scripts/BuildPetData.py
 
 script:
   - cd tests
