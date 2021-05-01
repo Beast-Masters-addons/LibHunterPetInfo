@@ -21,16 +21,6 @@ local function bitand(a, b)
     return result
 end
 
-local function table_search(table, item)
-    assert(type(table) == 'table', "Bad argument #1 to `table_search' (table expected)")
-    for key, value in pairs(table) do
-        if (item == value) then
-            return key;
-        end
-    end
-    return nil;
-end
-
 --/dump PetSkills.getSpellRank(16829)
 ---Get spell rank and icon
 ---@param spellId number
@@ -52,7 +42,7 @@ end
 
 
 --/dump LibPet:CurrentPetSpells()
-function PetSpells:CurrentPetSpells(includeTrainerSpells)
+function PetSpells.CurrentPetSpells()
     local slot = 1
     local spellName = ''
     local petSkills = {}
@@ -66,7 +56,7 @@ function PetSpells:CurrentPetSpells(includeTrainerSpells)
         end
 
         local spellId = bitand(petActionID, 0xFFFFFF)
-        print('spellName', spellName, 'spellId', spellId)
+        --print('spellName', spellName, 'spellId', spellId)
 
         petSkills[spellId] = { id = spellId, name = spellName, icon = spellIcon }
 
@@ -79,17 +69,6 @@ end
 function PetSpells.petSkillFromIcon(icon, rank)
     local spellId = _G['PetSpellRanks'][icon][rank]
     return spellId, _G.GetSpellInfo(spellId)
-end
-
---/dump PetSkills.petSkillFromName("Growl")
-function PetSpells.petSkillFromName(name)
-    local _, rank, icon, castTime, minRange, maxRange, spellId = _G.GetSpellInfo(name)
-    --[[    if skillType ~= 'PETACTION' then
-            error(name..' is not a at pet spell, type is '..skillType)
-        end
-        return bitand(petActionID, 0xFFFFFF)]]
-    rank, icon = PetSpells.getSpellRank(spellId)
-    return spellId, rank, icon
 end
 
 function PetSpells.getPetSkillIcon(spellId)
@@ -119,14 +98,6 @@ function PetSpells.petFamilyFromTexture(texture)
     error('No pet family found with icon texture ' .. texture)
 end
 
-function PetSpells.petSkillFromName(name)
-    local spellName, rank, icon, castTime, minRange, maxRange, spellId = _G.GetSpellInfo(name)
-    --[[    if skillType ~= 'PETACTION' then
-            error(name..' is not a at pet spell, skillType is '..skillType)
-        end]]
-    return spellId
-end
-
 --/dump PetSkills.getSkillSource('ability_druid_supriseattack', 1)
 function PetSpells.getSkillSource(icon, rank)
     if rank == nil then
@@ -144,7 +115,7 @@ end
 function PetSpells.generateNamesToIcons()
     local iconNames = {}
     for icon, ranks in pairs(_G['PetSpellRanks']) do
-        for rank, spellId in pairs(ranks) do
+        for _, spellId in pairs(ranks) do
             local name = _G.GetSpellInfo(spellId);
             if not iconNames[name] then
                 iconNames[name] = icon
@@ -165,8 +136,8 @@ function PetSpells.idToName()
 end
 
 function PetSpells.spellProperties(spellIcon, rank)
-    assert(_G['PetSpellRanks'][spellIcon], 'Unknown spell icon: '..spellIcon)
-    assert(_G['PetSpellRanks'][spellIcon][rank], 'Invalid rank: '..rank)
+    assert(_G['PetSpellRanks'][spellIcon], 'Unknown spell icon: ' .. spellIcon)
+    assert(_G['PetSpellRanks'][spellIcon][rank], 'Invalid rank: ' .. rank)
     local spellId = _G['PetSpellRanks'][spellIcon][rank]
     return _G['PetSpellProperties'][spellId]
 end
