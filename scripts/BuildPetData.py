@@ -3,7 +3,7 @@ import os
 import re
 
 from Petopia import Petopia
-from utils.Wowhead import Wowhead
+from build_utils.utils.Wowhead import Wowhead
 
 
 class BuildPetData(Wowhead):
