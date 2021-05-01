@@ -1,11 +1,22 @@
 <Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/
 ..\FrameXML\UI.xsd">
-    <Script file="addon\BeastLore.lua" />
-    <Script file="addon\BeastLoreEvents.lua" />
+    <Script file="data\PetFamilies.lua"/>
+    <Script file="data\PetFamilyMembers.lua"/>
+    <Script file="data\PetProperties.lua"/>
+    <Script file="data\PetSpellRanks.lua"/>
+    <Script file="data\PetAbilitySource.lua"/>
+    <Script file="data\PetSpellProperties.lua"/>
+    <Script file="data\PetSpellIconTextures.lua"/>
+    <Script file="data\ZoneInfo.lua"/>
+    <Script file="data\ZonesNameToId.lua"/>
+    <Script file="data\PetTables.lua"/>
+    <Script file="addon\CurrentPet.lua"/>
+    <Script file="addon\PetSpells.lua"/>
+    <Script file="addon\BeastLore.lua"/>
+    <Script file="addon\BeastLoreEvents.lua"/>
     <Script file="addon\LibHunterPetInfo.lua"/>
     <Script file="data\PetInfo.lua"/>
     <Script file="data\PetFamilies.lua"/>
-    <Script file="data\Zones.lua"/>
     <Script file="data\AbilityNPC.lua"/>
     <Script file="addon\FHH_compat.lua"/>
 </Ui>
