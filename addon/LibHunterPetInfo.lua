@@ -61,7 +61,7 @@ end
 function LibPet.petSkills(npcId)
 	assert(npcId, 'Missing NPC id')
 	local skills = {}
-	for skillKey, skill in pairs(_G['PetInfo']['AbilityNPC']) do
+	for skillKey, skill in pairs(_G['PetAbilitySource']) do
 		for rankKey, npcList in ipairs(skill) do
 			if type(npcList) == 'table' then
 				for _, npc in ipairs(npcList) do
@@ -73,5 +73,7 @@ function LibPet.petSkills(npcId)
 			end
 		end
 	end
-	return skills
+    if next(skills) ~= nil then
+        return skills
+    end
 end
