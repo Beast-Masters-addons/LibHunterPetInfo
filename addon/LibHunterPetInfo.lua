@@ -28,6 +28,10 @@ function LibPet:petInfo(beastName)
 	return self:getInfo('Pets', beastName)
 end
 
+function LibPet:petProperties(id)
+    return self:getInfo('PetProperties', id)
+end
+
 function LibPet:zoneInfo(zoneId)
 	return self:getInfo('Zones', zoneId)
 end
