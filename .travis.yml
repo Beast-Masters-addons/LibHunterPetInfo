@@ -25,13 +25,13 @@ before_install:
 
 before_script:
   - luacheck addon --no-color -q
-  - luacheck data --no-color -q
   - luacheck tests --no-color -q
   - git clone https://github.com/Beast-Masters-addons/build_utils scripts/build_utils
   - curl -s https://raw.githubusercontent.com/BigWigsMods/packager/master/release.sh | bash -s -- -d -z -g $GAME_VERSION
   - mv .release/LibHunterPetInfo/libs .
   - pip install -r scripts/requirements.txt
   - python scripts/BuildPetData.py
+  - luacheck data --no-color -q
 
 script:
   - cd tests
