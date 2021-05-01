@@ -47,10 +47,10 @@ function BeastLore.ParseBeastLore(tooltip)
                         --@end-debug@
                         table.insert(abilities, { name = spell, rank = rank })
                     end
-                    if string.find(match, 'Rank') == nil then
-                        print('Spell without rank found, please mouse over again')
-                        return false
-                    end
+--[[                    if string.find(match, 'Rank') == nil then
+                        print('Spell without rank found, please mouse over again', match, line)
+                        --return false
+                    end]]
                 elseif key == 'diet' then
                     for item in string.gmatch(match, '[^%s,]+') do
                         table.insert(diet, item)
