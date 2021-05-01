@@ -36,6 +36,24 @@ function LibPet:zoneNameFromId(zoneId)
 	return self:zoneInfo(zoneId)['name']
 end
 
+function LibPet.zonePets(zoneId)
+    local pets = {}
+    for petId, petInfo in pairs(_G['PetProperties']) do
+        for _, location in ipairs(petInfo['location']) do
+            if location == zoneId then
+                table.insert(pets, petId, petInfo)
+            end
+        end
+    end
+    if next(pets) ~= nil then
+        return pets
+    end
+end
+
+function LibPet:getZoneByName(zoneName)
+    return self:getInfo('ZonesNameToId', zoneName)
+end
+
 function LibPet.petSkills(npcId)
 	assert(npcId, 'Missing NPC id')
 	local skills = {}
