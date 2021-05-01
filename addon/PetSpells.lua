@@ -1,5 +1,5 @@
-_G['PetSkills'] = {}
-local PetSpells = _G['PetSkills']
+_G['PetSpells'] = {}
+local PetSpells = _G['PetSpells']
 local utils = _G.LibStub('BM-utils-1', 5)
 
 ---Bitwise AND for Lua 5.1
@@ -59,6 +59,7 @@ function PetSpells.CurrentPetSpells()
         --print('spellName', spellName, 'spellId', spellId)
 
         petSkills[spellId] = { id = spellId, name = spellName, icon = spellIcon }
+        --TODO: Add rank
 
         slot = slot + 1
     end
