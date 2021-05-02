@@ -15,7 +15,6 @@
     <Script file="addon\LibHunterPetInfo.lua"/>
     <Script file="addon\PetSpells.lua"/>
     <Script file="addon\CurrentPet.lua"/>
-    <Script file="data\PetInfo.lua"/>
     <Script file="data\PetFamilies.lua"/>
     <Script file="addon\FHH_compat.lua"/>
 </Ui>
