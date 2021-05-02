@@ -1,5 +1,8 @@
 _G['LibPet'] = {}
 local LibPet = _G['LibPet']
+local utils = _G['BMUtils']
+utils = _G.LibStub("BM-utils-1")
+LibPet.tables = _G['PetInfo']
 
 function LibPet.getInfo(tableName, key)
 	if not key then
@@ -80,4 +83,45 @@ function LibPet.petSkills(npcId)
     if next(skills) ~= nil then
         return skills
     end
+end
+
+function LibPet.levelRange(low, high, check)
+    if check and low > check then
+        low = utils:colorize(low, 0xff, 0x20, 0x20)
+    end
+    if high and high~=low then
+        if check and high > check then
+            high = utils:colorize(high, 0xff, 0x20, 0x20)
+        end
+        return utils:sprintf('%s-%s', low, high)
+    else
+        return low
+    end
+end
+
+function LibPet.petLevelString(petInfo)
+	local range = ''
+	if petInfo['minlevel'] ~= nil then
+		range = LibPet.levelRange(petInfo['minlevel'], petInfo['maxlevel'], _G.UnitLevel("player"))
+	end
+
+	local classification = ''
+	if (petInfo['classification'] == 1) then
+		-- Elite
+		classification = _G.ELITE
+	elseif (petInfo['classification'] == 4) then
+		-- Rare
+		classification = _G.ITEM_QUALITY3_DESC
+	elseif (petInfo['classification'] == 2) then
+		-- Rare Elite
+		classification = _G.ITEM_QUALITY3_DESC .. ' ' .. _G.ELITE
+	end
+
+	if classification ~= '' then
+		return utils:sprintf('%s (%s %s)', petInfo['name'], range, classification)
+	elseif range ~= '' then
+		return utils:sprintf('%s (%s)', petInfo['name'], range or classification)
+	else
+		return petInfo['name']
+	end
 end
