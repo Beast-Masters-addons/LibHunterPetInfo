@@ -38,13 +38,8 @@ function PetSpells.getSpellFromIcon(icon, rank)
     return ranks[rank], spellName, iconTexture
 end
 
-function PetSpells.getPetSkillIcon(spellId)
-    assert(_G['PetSpellProperties'][spellId], 'No info for spell ' .. spellId)
-    return _G['PetSpellProperties'][spellId]['icon']
-end
-
-function PetSpells.petSkillFromTexture(texture)
-    return _G['PetSpellIconTextures'][texture]
+function PetSpells.getSpellIconFromTexture(texture)
+    return LibPet.getInfo('SpellIconTextures', texture)
 end
 
 function PetSpells.petFamilyFromTexture(texture)
