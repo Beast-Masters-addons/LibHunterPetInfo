@@ -132,6 +132,9 @@ class BuildPetData(Wowhead):
 
 if __name__ == "__main__":
     build = BuildPetData()
+    if not os.path.exists(build.data_folder):
+        os.mkdir(build.data_folder)
+
     build.save(build.families(), 'PetFamilies')
 
     spell_properties, icon_textures, sources = build.spell_properties()
