@@ -39,7 +39,7 @@ before_script:
 
 script:
   - cd tests
-  - for test in test*.lua; do lua "$test"; done
+  - for test in test*.lua; do lua -lluacov "$test"; done
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)
