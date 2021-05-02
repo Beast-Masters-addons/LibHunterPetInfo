@@ -36,6 +36,7 @@ before_script:
 script:
   - cd tests
   - lua -lluacov test_PetInfo.lua
+  - lua -lluacov test_PetSpells.lua
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)
