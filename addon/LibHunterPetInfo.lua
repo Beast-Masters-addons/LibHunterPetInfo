@@ -16,28 +16,32 @@ function LibPet.getInfo(tableName, key)
 	return info
 end
 
-function LibPet:familyInfo(familyId)
-	return self.getInfo('Families', familyId)
+function LibPet.familyInfo(familyId)
+	return LibPet.getInfo('Families', familyId)
 end
 
-function LibPet:familyName(familyId)
-	return self.familyInfo(familyId)['name']
+function LibPet.familyName(familyId)
+	return LibPet.familyInfo(familyId)['name']
 end
 
-function LibPet:petInfo(beastName)
-	return self.getInfo('Pets', beastName)
+---petInfo
+---@param beastName string
+---@deprecated
+function LibPet.petInfo(beastName)
+	return LibPet.getInfo('Pets', beastName)
 end
 
-function LibPet:petProperties(id)
-    return self.getInfo('PetProperties', id)
+function LibPet.petProperties(id)
+    return LibPet.getInfo('PetProperties', id)
 end
 
-function LibPet:zoneInfo(zoneId)
-	return self.getInfo('Zones', zoneId)
+function LibPet.getZoneInfo(zoneId)
+	return LibPet.getInfo('Zones', zoneId)
 end
 
-function LibPet:zoneNameFromId(zoneId)
-	return self:zoneInfo(zoneId)['name']
+function LibPet.zoneNameFromId(zoneId)
+	--C_Map.GetAreaInfo(areaID)
+	return LibPet.zoneInfo(zoneId)['name']
 end
 
 function LibPet.zonePets(zoneId)
@@ -54,8 +58,8 @@ function LibPet.zonePets(zoneId)
     end
 end
 
-function LibPet:getZoneByName(zoneName)
-    return self.getInfo('ZonesNameToId', zoneName)
+function LibPet.getZoneByName(zoneName)
+    return LibPet.getInfo('ZonesNameToId', zoneName)
 end
 
 function LibPet.petSkills(npcId)
