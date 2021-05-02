@@ -17,3 +17,7 @@ function _G.GetSpellBookItemInfo(index, bookType)
         end
     end
 end
+
+function _G.GetPetIcon()
+    return 132184
+end
