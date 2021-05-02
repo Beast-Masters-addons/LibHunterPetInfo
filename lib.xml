@@ -16,5 +16,4 @@
     <Script file="addon\PetSpells.lua"/>
     <Script file="addon\CurrentPet.lua"/>
     <Script file="data\PetFamilies.lua"/>
-    <Script file="addon\FHH_compat.lua"/>
 </Ui>
