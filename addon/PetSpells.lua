@@ -61,7 +61,7 @@ function PetSpells.generateNamesToIcons()
     for icon, ranks in pairs(_G['PetSpellRanks']) do
         for _, spellId in pairs(ranks) do
             local name = _G.GetSpellInfo(spellId);
-            if not iconNames[name] then
+            if name~=nil and not iconNames[name] then
                 iconNames[name] = icon
             end
         end
