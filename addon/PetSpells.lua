@@ -42,16 +42,6 @@ function PetSpells.getSpellIconFromTexture(texture)
     return LibPet.getInfo('SpellIconTextures', texture)
 end
 
-function PetSpells.petFamilyFromTexture(texture)
-    assert(texture, 'Texture is empty')
-    for _, family in pairs(_G['PetFamilies']) do
-        if family['icon_texture'] == texture then
-            return family
-        end
-    end
-    error('No pet family found with icon texture ' .. texture)
-end
-
 --/dump PetSkills.getSkillSource('ability_druid_supriseattack', 1)
 function PetSpells.getSkillSource(icon, rank)
     if rank == nil then

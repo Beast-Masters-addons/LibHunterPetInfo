@@ -1,6 +1,7 @@
 _G['CurrentPet'] = {}
 local CurrentPet = _G['CurrentPet']
 local PetSpells = _G['PetSpells']
+local LibPet = _G['LibPet']
 
 ---Bitwise AND for Lua 5.1
 ---https://stackoverflow.com/a/32387452/2630074
@@ -22,7 +23,7 @@ local function bitand(a, b)
 end
 
 function CurrentPet.info()
-    return PetSpells.petFamilyFromTexture(_G.GetPetIcon())
+    return LibPet.getFamilyInfoFromTexture(_G.GetPetIcon())
 end
 
 function CurrentPet.spells()

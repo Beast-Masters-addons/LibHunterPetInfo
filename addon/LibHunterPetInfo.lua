@@ -27,6 +27,16 @@ function LibPet.familyName(familyId)
 	return LibPet.familyInfo(familyId)['name']
 end
 
+function LibPet.getFamilyInfoFromTexture(texture)
+	assert(texture, 'Texture is empty')
+	for _, family in pairs(_G['PetFamilies']) do
+		if family['icon_texture'] == texture then
+			return family
+		end
+	end
+	error('No pet family found with icon texture ' .. texture)
+end
+
 ---petInfo
 ---@param beastName string
 ---@deprecated
