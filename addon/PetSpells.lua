@@ -7,8 +7,7 @@ local utils = _G.LibStub('BM-utils-1', 5)
 ---Get spell rank and icon
 ---@param spellId number
 function PetSpells.getSpellRank(spellId)
-    for icon, ranks in pairs(_G['PetSpellRanks']) do
-        print('icon', icon)
+    for icon, ranks in pairs(LibPet.tables['SpellRanks']) do
         for rank, spellId_check in pairs(ranks) do
             if spellId == spellId_check then
                 return rank, icon
@@ -28,10 +27,11 @@ function PetSpells.getSpellProperties(spellId)
 end
 
 function PetSpells.getSpellPropertiesByIcon(spellIcon, rank)
-    assert(_G['PetSpellRanks'][spellIcon], 'Unknown spell icon: ' .. spellIcon)
-    assert(_G['PetSpellRanks'][spellIcon][rank], 'Invalid rank: ' .. rank)
-    local spellId = _G['PetSpellRanks'][spellIcon][rank]
-    return _G['PetSpellProperties'][spellId]
+    local ranks = LibPet.tables['SpellRanks']
+    assert(ranks[spellIcon], 'Unknown spell icon: ' .. spellIcon)
+    assert(ranks[spellIcon][rank], 'Invalid rank: ' .. rank)
+    local spellId = ranks[spellIcon][rank]
+    return PetSpells.getSpellProperties(spellId)
 end
 
 ---Get spell from icon and rank
@@ -54,21 +54,21 @@ function PetSpells.getSkillSource(icon, rank)
     if rank == nil then
         rank = 1
     end
-    if _G['PetAbilitySource'][icon] == nil then
+    if LibPet.tables['AbilitySource'][icon] == nil then
         --@debug@
         print('No source information for ' .. icon)
         --@end-debug@
         return
     end
-    return _G['PetAbilitySource'][icon][rank]
+    return LibPet.tables['AbilitySource'][icon][rank]
 end
 
 function PetSpells.generateNamesToIcons()
     local iconNames = {}
-    for icon, ranks in pairs(_G['PetSpellRanks']) do
+    for icon, ranks in pairs(LibPet.tables['SpellRanks']) do
         for _, spellId in pairs(ranks) do
             local name = _G.GetSpellInfo(spellId);
-            if name~=nil and not iconNames[name] then
+            if name ~= nil and not iconNames[name] then
                 iconNames[name] = icon
             end
         end
