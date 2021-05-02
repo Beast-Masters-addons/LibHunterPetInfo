@@ -1,7 +1,7 @@
 _G['LibPet'] = {}
 local LibPet = _G['LibPet']
-local utils = _G['BMUtils']
-utils = _G.LibStub("BM-utils-1")
+LibPet.utils = _G['BMUtils']
+LibPet.utils = _G.LibStub("BM-utils-1")
 LibPet.tables = _G['PetInfo']
 
 function LibPet.getInfo(tableName, key)
@@ -92,13 +92,13 @@ end
 
 function LibPet.levelRange(low, high, check)
     if check and low > check then
-        low = utils:colorize(low, 0xff, 0x20, 0x20)
+        low = LibPet.utils:colorize(low, 0xff, 0x20, 0x20)
     end
     if high and high~=low then
         if check and high > check then
-            high = utils:colorize(high, 0xff, 0x20, 0x20)
+            high = LibPet.utils:colorize(high, 0xff, 0x20, 0x20)
         end
-        return utils:sprintf('%s-%s', low, high)
+        return LibPet.utils:sprintf('%s-%s', low, high)
     else
         return low
     end
@@ -123,9 +123,9 @@ function LibPet.petLevelString(petInfo)
 	end
 
 	if classification ~= '' then
-		return utils:sprintf('%s (%s %s)', petInfo['name'], range, classification)
+		return LibPet.utils:sprintf('%s (%s %s)', petInfo['name'], range, classification)
 	elseif range ~= '' then
-		return utils:sprintf('%s (%s)', petInfo['name'], range or classification)
+		return LibPet.utils:sprintf('%s (%s)', petInfo['name'], range or classification)
 	else
 		return petInfo['name']
 	end
