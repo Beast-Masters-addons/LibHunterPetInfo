@@ -27,6 +27,13 @@ function PetSpells.getSpellProperties(spellId)
     return properties
 end
 
+function PetSpells.getSpellPropertiesByIcon(spellIcon, rank)
+    assert(_G['PetSpellRanks'][spellIcon], 'Unknown spell icon: ' .. spellIcon)
+    assert(_G['PetSpellRanks'][spellIcon][rank], 'Invalid rank: ' .. rank)
+    local spellId = _G['PetSpellRanks'][spellIcon][rank]
+    return _G['PetSpellProperties'][spellId]
+end
+
 ---Get spell from icon and rank
 ---@param icon string
 ---@param rank string
@@ -77,13 +84,6 @@ function PetSpells.idToName()
         end
     end
     return idNames
-end
-
-function PetSpells.spellProperties(spellIcon, rank)
-    assert(_G['PetSpellRanks'][spellIcon], 'Unknown spell icon: ' .. spellIcon)
-    assert(_G['PetSpellRanks'][spellIcon][rank], 'Invalid rank: ' .. rank)
-    local spellId = _G['PetSpellRanks'][spellIcon][rank]
-    return _G['PetSpellProperties'][spellId]
 end
 
 function PetSpells.learnableByFamily(spellIcon, family)
