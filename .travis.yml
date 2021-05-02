@@ -35,7 +35,7 @@ before_script:
 
 script:
   - cd tests
-  - find -name test_\*.lua -exec lua -lluacov {} \;
+  - for test in test*.lua; do lua "$test"; done
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)
