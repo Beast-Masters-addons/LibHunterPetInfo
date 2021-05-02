@@ -15,12 +15,12 @@ local LibPet = _G['LibPet']
 --print(_G['PetInfo']['Families'])
 
 function test.testFamilyInfo()
-	local info = LibPet:familyInfo(4)
+	local info = LibPet.familyInfo(4)
 	lu.assertEquals(info['name'], 'Bear')
 end
 
 function test.testPetInfo()
-	local info = LibPet:petInfo('Snow Leopard')
+	local info = LibPet.petInfo('Snow Leopard')
 	lu.assertEquals(info['npc'], 1201)
 	lu.assertEquals(info['family'], 2)
 end
@@ -41,7 +41,7 @@ function test.testPetNoSkills()
 end
 
 function test.testZoneNoPets()
-	local pets = LibPet:zonePets(722)
+	local pets = LibPet.zonePets(722)
 	lu.assertEquals(pets, nil)
 end
 
