@@ -69,9 +69,9 @@ function test.testGetFamilySpells()
     lu.assertEquals(spells[2]['id'], 23110)
     lu.assertEquals(spells[2]['icon'], 'ability_druid_dash')
 
-    local spells2 = PetSpells.getFamilySpells(4)
+--[[    local spells2 = PetSpells.getFamilySpells(4)
     lu.assertEquals(spells2[2]['id'], 27049)
-    lu.assertEquals(spells2[2]['icon'], 'ability_druid_rake')
+    lu.assertEquals(spells2[2]['icon'], 'ability_druid_rake')]]
 end
 
 os.exit(lu.LuaUnit.run())
