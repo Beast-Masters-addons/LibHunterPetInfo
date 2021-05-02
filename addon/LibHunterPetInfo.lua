@@ -5,10 +5,11 @@ LibPet.utils = _G.LibStub("BM-utils-1")
 LibPet.tables = _G['PetInfo']
 
 function LibPet.getInfo(tableName, key)
+	assert(type(key) ~= 'table', 'Key is table')
 	if not key then
 		error('Invalid key')
 	end
-	local table = _G['PetInfo'][tableName]
+	local table = LibPet.tables[tableName]
 	if not table then
 		error(tableName..' is not a valid table name')
 	end
@@ -73,13 +74,13 @@ end
 function LibPet.petSkills(npcId)
 	assert(npcId, 'Missing NPC id')
 	local skills = {}
-	for skillKey, skill in pairs(_G['PetAbilitySource']) do
+	for spellIcon, skill in pairs(LibPet.tables['AbilitySource']) do
 		for rankKey, npcList in ipairs(skill) do
 			if type(npcList) == 'table' then
 				for _, npc in ipairs(npcList) do
 					if npc==npcId then
 						--print('Skill: '..skillKey, 'Rank: '..rankKey)
-						skills[skillKey] = rankKey
+						skills[spellIcon] = rankKey
 					end
 				end
 			end
