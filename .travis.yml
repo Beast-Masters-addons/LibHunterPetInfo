@@ -11,7 +11,10 @@ jobs:
         - export GAME_VERSION="bc"
         - export WOWHEAD_DOMAIN="tbc"
 
-cache: pip
+cache:
+  directories:
+    - /usr/local/lib/luarocks/rocks
+  pip: true
 
 addons:
   apt:
