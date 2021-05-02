@@ -21,23 +21,26 @@ function PetSpells.getSpellRanks(spellIcon)
     return _G['PetSpellRanks'][spellIcon]
 end
 
---/dump LibPet.petSkillFromIcon('spell_nature_starfall', 2)
-function PetSpells.petSkillFromIcon(icon, rank)
-    local spellId = _G['PetSpellRanks'][icon][rank]
-    return spellId, _G.GetSpellInfo(spellId)
+function PetSpells.getSpellProperties(spellId)
+    local properties = LibPet.getInfo('SpellProperties', spellId)
+    properties['name'] = _G.GetSpellInfo(properties['id'])
+    return properties
+end
+
+---Get spell from icon and rank
+---@param icon string
+---@param rank string
+---@return string spellId, spellName, GetSpellInfo
+function PetSpells.getSpellFromIcon(icon, rank)
+    local ranks = PetSpells.getSpellRanks(icon)
+    assert(ranks[rank], utils:sprintf('Invalid rank %d', rank))
+    local spellName, iconTexture = _G.GetSpellInfo(ranks[rank])
+    return ranks[rank], spellName, iconTexture
 end
 
 function PetSpells.getPetSkillIcon(spellId)
     assert(_G['PetSpellProperties'][spellId], 'No info for spell ' .. spellId)
     return _G['PetSpellProperties'][spellId]['icon']
-end
-
---/dump LibPet.petSkillFromIcon('spell_nature_starfall', 2)
-function PetSpells.petSkillFromIcon(icon, rank)
-    assert(_G['PetSpellRanks'][icon], 'No spell with icon ' .. icon)
-    assert(_G['PetSpellRanks'][icon][rank], 'Invalid rank ' .. rank)
-    local spellId = _G['PetSpellRanks'][icon][rank]
-    return spellId, _G.GetSpellInfo(spellId)
 end
 
 function PetSpells.petSkillFromTexture(texture)
@@ -95,10 +98,6 @@ function PetSpells.spellProperties(spellIcon, rank)
     assert(_G['PetSpellRanks'][spellIcon], 'Unknown spell icon: ' .. spellIcon)
     assert(_G['PetSpellRanks'][spellIcon][rank], 'Invalid rank: ' .. rank)
     local spellId = _G['PetSpellRanks'][spellIcon][rank]
-    return _G['PetSpellProperties'][spellId]
-end
-
-function PetSpells.spellPropertiesById(spellId)
     return _G['PetSpellProperties'][spellId]
 end
 
