@@ -35,8 +35,7 @@ before_script:
 
 script:
   - cd tests
-  - lua -lluacov test_PetInfo.lua
-  - lua -lluacov test_PetSpells.lua
+  - find -name test_\*.lua -exec lua -lluacov {} \;
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)
