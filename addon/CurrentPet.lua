@@ -42,9 +42,6 @@ function CurrentPet.spells()
         local spellId = bitand(petActionID, 0xFFFFFF)
         petSkills[spellId] = PetSpells.getSpellProperties(spellId)
 
-        --petSkills[spellId] = { id = spellId, name = spellName, icon = spellIcon }
-
         slot = slot + 1
     end
-    return petSkills
 end
