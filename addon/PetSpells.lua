@@ -2,25 +2,6 @@ _G['PetSpells'] = {}
 local PetSpells = _G['PetSpells']
 local utils = _G.LibStub('BM-utils-1', 5)
 
----Bitwise AND for Lua 5.1
----https://stackoverflow.com/a/32387452/2630074
----@param a number
----@param b number
-local function bitand(a, b)
-    local result = 0
-    local bitval = 1
-    while a > 0 and b > 0 do
-        if a % 2 == 1 and b % 2 == 1 then
-            -- test the rightmost bits
-            result = result + bitval      -- set the current bit
-        end
-        bitval = bitval * 2 -- shift left
-        a = math.floor(a / 2) -- shift right
-        b = math.floor(b / 2)
-    end
-    return result
-end
-
 --/dump PetSkills.getSpellRank(16829)
 ---Get spell rank and icon
 ---@param spellId number
@@ -38,32 +19,6 @@ end
 function PetSpells.getSpellRanks(spellIcon)
     assert(_G['PetSpellRanks'][spellIcon], utils:sprintf('No ranks found for %s', spellIcon))
     return _G['PetSpellRanks'][spellIcon]
-end
-
-
---/dump LibPet:CurrentPetSpells()
-function PetSpells.CurrentPetSpells()
-    local slot = 1
-    local spellName = ''
-    local petSkills = {}
-
-    while spellName do
-        local spellIcon = _G.GetSpellBookItemTexture(slot, _G.BOOKTYPE_PET);
-        spellName = _G.GetSpellBookItemName(slot, _G.BOOKTYPE_PET);
-        local _, petActionID = _G.GetSpellBookItemInfo(slot, _G.BOOKTYPE_PET)
-        if petActionID == nil then
-            return petSkills
-        end
-
-        local spellId = bitand(petActionID, 0xFFFFFF)
-        --print('spellName', spellName, 'spellId', spellId)
-
-        petSkills[spellId] = { id = spellId, name = spellName, icon = spellIcon }
-        --TODO: Add rank
-
-        slot = slot + 1
-    end
-    return petSkills
 end
 
 --/dump LibPet.petSkillFromIcon('spell_nature_starfall', 2)
