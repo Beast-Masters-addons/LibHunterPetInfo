@@ -9,6 +9,8 @@ local ZoneInfo = _G['ZoneInfo']
 function test.testGetZoneInfo()
     local info = ZoneInfo.getZoneInfo(33)
     lu.assertEquals(info['name'], 'Stranglethorn Vale')
+    local info2 = ZoneInfo.getZoneInfo(1)
+    lu.assertEquals(info2['name'], 'Dun Morogh')
 end
 
 function test.testGetZoneId()
