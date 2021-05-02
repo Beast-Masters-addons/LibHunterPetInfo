@@ -97,14 +97,11 @@ function PetSpells.learnableByFamily(spellIcon, family)
     return false
 end
 
-function PetSpells.familySkills(family_key)
-    assert(_G['PetFamilies'][family_key], 'Invalid family id ' .. family_key)
-    local family = _G['PetFamilies'][family_key]
+function PetSpells.getFamilySpells(familyId)
+    local familyInfo = LibPet.familyInfo(familyId)
     local spells = {}
-    for _, spell in ipairs(family['spells']) do
-        --spells:insert(PetSkills.getPetSkillIcon(spell))
-        table.insert(spells, PetSpells.getPetSkillIcon(spell))
+    for _, spell in ipairs(familyInfo['spells']) do
+        table.insert(spells, PetSpells.getSpellProperties(spell))
     end
     return spells
 end
-
