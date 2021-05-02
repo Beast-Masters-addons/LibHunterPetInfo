@@ -9,11 +9,13 @@
     <Script file="data\PetSpellIconTextures.lua"/>
     <Script file="data\ZoneInfo.lua"/>
     <Script file="data\ZonesNameToId.lua"/>
+    <Script file="data\MapToZone.lua"/>
     <Script file="addon\PetDataTables.lua"/>
     <Script file="addon\BeastLore.lua"/>
     <Script file="addon\BeastLoreEvents.lua"/>
     <Script file="addon\LibHunterPetInfo.lua"/>
     <Script file="addon\PetSpells.lua"/>
     <Script file="addon\CurrentPet.lua"/>
+    <Script file="addon\ZoneInfo.lua"/>
     <Script file="data\PetFamilies.lua"/>
 </Ui>

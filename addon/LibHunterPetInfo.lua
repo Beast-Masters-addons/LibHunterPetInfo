@@ -42,9 +42,7 @@ function LibPet.petProperties(id)
     return LibPet.getInfo('PetProperties', id)
 end
 
-function LibPet.getZoneInfo(zoneId)
-	return LibPet.getInfo('Zones', zoneId)
-end
+
 
 function LibPet.zonePets(zoneId)
     local pets = {}

@@ -21,3 +21,19 @@ end
 function _G.GetPetIcon()
     return 132184
 end
+
+_G.C_Map = {}
+function _G.C_Map.GetAreaInfo(areaID)
+    if areaID == 1 then
+        return 'Dun Morogh'
+    elseif areaID == 33 then
+        return 'Stranglethorn Vale'
+    end
+end
+
+function _G.C_Map.GetBestMapForUnit(unit)
+    return 1434
+end
+function _G.C_Map.GetMapChildrenInfo() end
+
+function _G.C_Map.GetMapInfo() end
