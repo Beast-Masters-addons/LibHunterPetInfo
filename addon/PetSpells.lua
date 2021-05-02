@@ -1,5 +1,6 @@
 _G['PetSpells'] = {}
 local PetSpells = _G['PetSpells']
+local LibPet = _G['LibPet']
 local utils = _G.LibStub('BM-utils-1', 5)
 
 --/dump PetSkills.getSpellRank(16829)
@@ -17,8 +18,7 @@ function PetSpells.getSpellRank(spellId)
 end
 
 function PetSpells.getSpellRanks(spellIcon)
-    assert(_G['PetSpellRanks'][spellIcon], utils:sprintf('No ranks found for %s', spellIcon))
-    return _G['PetSpellRanks'][spellIcon]
+    return LibPet.getInfo('SpellRanks', spellIcon)
 end
 
 function PetSpells.getSpellProperties(spellId)
