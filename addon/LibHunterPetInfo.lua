@@ -38,13 +38,6 @@ function LibPet.getFamilyInfoFromTexture(texture)
 	error('No pet family found with icon texture ' .. texture)
 end
 
----petInfo
----@param beastName string
----@deprecated
-function LibPet.petInfo(beastName)
-	return LibPet.getInfo('Pets', beastName)
-end
-
 function LibPet.petProperties(id)
     return LibPet.getInfo('PetProperties', id)
 end

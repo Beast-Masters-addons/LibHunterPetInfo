@@ -19,12 +19,6 @@ function test.testFamilyInfo()
 	lu.assertEquals(info['name'], 'Bear')
 end
 
-function test.testPetInfo()
-	local info = LibPet.petInfo('Snow Leopard')
-	lu.assertEquals(info['npc'], 1201)
-	lu.assertEquals(info['family'], 2)
-end
-
 function test.testGetZoneInfo()
 	local zoneInfo = LibPet.getZoneInfo(1)
 	lu.assertEquals(zoneInfo['name'], 'Dun Morogh')
