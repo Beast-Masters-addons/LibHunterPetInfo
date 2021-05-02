@@ -6,6 +6,12 @@ _G['test'] = {}
 local test = _G['test']
 local CurrentPet = _G['CurrentPet']
 
+function test.testInfo()
+    local familyInfo = CurrentPet.info()
+    lu.assertEquals(familyInfo['icon'], 'ability_hunter_pet_boar')
+    lu.assertEquals(familyInfo['id'], 5)
+end
+
 function test.testSpells()
     local spells = CurrentPet.spells()
     local spell = spells[17257]
