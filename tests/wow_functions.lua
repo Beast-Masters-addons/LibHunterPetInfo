@@ -32,7 +32,9 @@ function _G.C_Map.GetAreaInfo(areaID)
 end
 
 function _G.C_Map.GetBestMapForUnit(unit)
-    return 1434
+    if unit == 'player' then
+        return 1434
+    end
 end
 function _G.C_Map.GetMapChildrenInfo() end
 
