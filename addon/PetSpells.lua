@@ -87,10 +87,9 @@ function PetSpells.idToName()
 end
 
 function PetSpells.learnableByFamily(spellIcon, family)
-    assert(_G['PetFamilies'][family], 'Invalid family ' .. family)
-    local familyInfo = _G['PetFamilies'][family]
+    local familyInfo = LibPet.familyInfo(family)
     for _, spellId in ipairs(familyInfo['spells']) do
-        local icon = PetSpells.getPetSkillIcon(spellId)
+        local icon = PetSpells.getSpellProperties(spellId)['icon']
         if icon == spellIcon then
             return true
         end
