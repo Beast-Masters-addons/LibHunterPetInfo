@@ -8,4 +8,5 @@ _G['PetInfo'] = {
     SpellRanks = _G['PetSpellRanks'],
     Zones = _G['ZoneInfo'],
     ZonesNameToId = _G['ZonesNameToId'],
+    MapToZone = _G['MapToZone'],
 }
