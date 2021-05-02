@@ -25,9 +25,9 @@ function test.testPetInfo()
 	lu.assertEquals(info['family'], 2)
 end
 
-function test.testZone()
-	local zoneName = LibPet:zoneNameFromId(1)
-	lu.assertEquals(zoneName, 'Dun Morogh')
+function test.testGetZoneInfo()
+	local zoneInfo = LibPet.getZoneInfo(1)
+	lu.assertEquals(zoneInfo['name'], 'Dun Morogh')
 end
 
 function test.testPetSkills()

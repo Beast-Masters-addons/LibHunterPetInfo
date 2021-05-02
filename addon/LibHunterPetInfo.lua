@@ -52,11 +52,6 @@ function LibPet.getZoneInfo(zoneId)
 	return LibPet.getInfo('Zones', zoneId)
 end
 
-function LibPet.zoneNameFromId(zoneId)
-	--C_Map.GetAreaInfo(areaID)
-	return LibPet.zoneInfo(zoneId)['name']
-end
-
 function LibPet.zonePets(zoneId)
     local pets = {}
     for petId, petInfo in pairs(_G['PetProperties']) do
