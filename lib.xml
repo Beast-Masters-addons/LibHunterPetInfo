@@ -7,7 +7,7 @@
     <Script file="data\PetAbilitySource.lua"/>
     <Script file="data\PetSpellProperties.lua"/>
     <Script file="data\PetSpellIconTextures.lua"/>
-    <Script file="data\ZoneInfo.lua"/>
+    <Script file="data\ZoneData.lua"/>
     <Script file="data\ZonesNameToId.lua"/>
     <Script file="data\MapToZone.lua"/>
     <Script file="addon\PetDataTables.lua"/>

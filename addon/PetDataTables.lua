@@ -6,7 +6,7 @@ _G['PetInfo'] = {
     SpellIconTextures = _G['PetSpellIconTextures'],
     SpellProperties = _G['PetSpellProperties'],
     SpellRanks = _G['PetSpellRanks'],
-    Zones = _G['ZoneInfo'],
+    Zones = _G['ZoneData'],
     ZonesNameToId = _G['ZonesNameToId'],
     MapToZone = _G['MapToZone'],
 }

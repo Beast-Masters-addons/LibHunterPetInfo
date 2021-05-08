@@ -149,5 +149,5 @@ if __name__ == "__main__":
     build.save(pet_family_members, 'PetFamilyMembers')
 
     zone_info, zone_name_to_id = build.zones()
-    build.save(zone_info, 'ZoneInfo')
+    build.save(zone_info, 'ZoneData')
     build.save(zone_name_to_id, 'ZonesNameToId')
