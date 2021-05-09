@@ -43,3 +43,7 @@ function _G.C_Map.GetMapInfo() end
 function _G.GetLocale()
     return _G['locale'] or 'enUS'
 end
+
+function _G.UnitLevel(unit)
+    return _G['playerLevel'] or 34
+end
