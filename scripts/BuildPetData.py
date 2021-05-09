@@ -27,6 +27,11 @@ class BuildPetData(Wowhead):
             family_ids.append(family['id'])
             family['icon_texture'] = textures[family['icon']]
             data_dict[family['id']] = family
+            diets = []
+            for diet in [1, 2, 4, 8, 16, 32, 64, 128]:
+                if family['diet'] & diet:
+                    diets.append(diet)
+            family['diet'] = diets
 
         return data_dict
 

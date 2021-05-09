@@ -1,6 +1,6 @@
 local lu = require('luaunit')
 
---loadfile('wow_functions.lua')()
+loadfile('wow_functions.lua')()
 --loadfile('Util.lua')()
 --loadfile('../libs/LibStub/LibStub.lua')()
 _G['PetInfo'] = {}
@@ -34,5 +34,15 @@ function test.testZoneNoPets()
 	lu.assertEquals(pets, nil)
 end
 
+function test.testGetDiet()
+	local diet = LibPet.getDiet(26)
+	lu.assertEquals({1}, diet)
+end
+
+function test.testGetDietStrings()
+	lu.assertEquals({'Meat'}, LibPet.getDietStrings(26))
+    _G['locale'] = 'deDE'
+    lu.assertEquals({'Fleisch'}, LibPet.getDietStrings(26))
+end
 
 os.exit( lu.LuaUnit.run() )

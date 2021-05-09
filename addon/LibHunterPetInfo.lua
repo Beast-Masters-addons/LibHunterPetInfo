@@ -28,6 +28,30 @@ function LibPet.familyName(familyId)
 	return LibPet.familyInfo(familyId)['name']
 end
 
+function LibPet.getDiet(familyId)
+    return LibPet.familyInfo(familyId)['diet']
+end
+
+function LibPet.getDietStrings(familyId)
+    local locale = _G.GetLocale()
+    local strings
+    if _G.PetDietLocale[locale] == nil then
+        --@debug@
+        print(('No strings for %s found, falling back to enUS'):format(locale))
+        --@end-debug@
+        strings = _G.PetDietLocale['enUS']
+    else
+        strings = _G.PetDietLocale[locale]
+    end
+
+    local diets = LibPet.getDiet(familyId)
+    local dietStrings = {}
+    for _, diet_id in ipairs(diets) do
+        table.insert(dietStrings, strings[diet_id])
+    end
+    return dietStrings
+end
+
 function LibPet.getFamilyInfoFromTexture(texture)
 	assert(texture, 'Texture is empty')
 	for _, family in pairs(_G['PetFamilies']) do

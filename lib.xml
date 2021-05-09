@@ -10,6 +10,9 @@
     <Script file="data\ZoneData.lua"/>
     <Script file="data\ZonesNameToId.lua"/>
     <Script file="data\MapToZone.lua"/>
+
+    <Script file="locale\PetDietLocale.lua"/>
+
     <Script file="addon\PetDataTables.lua"/>
     <Script file="addon\BeastLore.lua"/>
     <Script file="addon\BeastLoreEvents.lua"/>

@@ -39,3 +39,7 @@ end
 function _G.C_Map.GetMapChildrenInfo() end
 
 function _G.C_Map.GetMapInfo() end
+
+function _G.GetLocale()
+    return _G['locale'] or 'enUS'
+end

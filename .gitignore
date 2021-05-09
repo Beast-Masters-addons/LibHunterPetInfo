@@ -6,4 +6,5 @@ build_utils
 
 __pycache__
 data/*
+locale/*
 libs
