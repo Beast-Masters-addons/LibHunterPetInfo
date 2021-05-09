@@ -82,12 +82,15 @@ class BuildPetData(Wowhead):
 
         return properties, spell_icon_textures, spell_sources
 
-    def spell_ranks(self):
+    def spell_ranks(self, valid_ids):
         response = self.query(uri='/spells/pet-abilities/hunter')
         spells = self.get_gatherer_data(response)
         ranks = {}
 
         for spell_id, spell in spells.items():
+            if int(spell_id) not in valid_ids:
+                continue
+
             icon = spell['icon']
             rank_key = 'rank_enus'
 
@@ -147,7 +150,7 @@ if __name__ == "__main__":
     build.save(icon_textures, 'PetSpellIconTextures')
 
     build.save(sources, 'PetAbilitySource')
-    build.save(build.spell_ranks(), 'PetSpellRanks')
+    build.save(build.spell_ranks(list(spell_properties.keys())), 'PetSpellRanks')
 
     pet_properties, pet_family_members = build.pet_properties()
     build.save(pet_properties, 'PetProperties')
