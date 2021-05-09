@@ -45,5 +45,7 @@ function _G.GetLocale()
 end
 
 function _G.UnitLevel(unit)
-    return _G['playerLevel'] or 34
+    if unit == 'player' then
+        return _G['playerLevel'] or 34
+    end
 end
