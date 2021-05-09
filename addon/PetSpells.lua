@@ -76,11 +76,16 @@ function PetSpells.generateNamesToIcons()
     return iconNames
 end
 
-function PetSpells.idToName()
+function PetSpells.idToName(localize)
     local idNames = {}
     for id, spell in pairs(_G['PetSpellProperties']) do
         if spell['rank'] == 1 or spell['rank'] == nil then
-            idNames[spell['name']] = id
+            if localize then
+                local name = _G.GetSpellInfo(id)
+                idNames[name] = id
+            else
+                idNames[spell['name']] = id
+            end
         end
     end
     return idNames
