@@ -1,6 +1,6 @@
 import os
 
-from utils.Wowhead import Wowhead
+from build_utils.utils.Wowhead import Wowhead
 
 
 class BuildLocale(Wowhead):
