@@ -4,6 +4,7 @@ loadfile('wow_functions.lua')()
 --loadfile('Util.lua')()
 --loadfile('../libs/LibStub/LibStub.lua')()
 _G['PetInfo'] = {}
+_G['locale'] = 'deDE'
 loadfile('../scripts/build_utils/utils/load_toc.lua')('../LibHunterPetInfo.toc', { 'BeastLoreEvents.lua' })
 
 --print(_G['PetInfo']['Pets']['Snow Leopard']['family'])
@@ -17,6 +18,11 @@ local LibPet = _G['LibPet']
 function test.testFamilyInfo()
 	local info = LibPet.familyInfo(4)
 	lu.assertEquals(info['name'], 'Bear')
+end
+
+function test.testFamilyName()
+	lu.assertEquals(LibPet.getLocalizedFamilyName(4), 'Bär')
+	lu.assertEquals(LibPet.familyName(4), 'Bear')
 end
 
 function test.testPetSkills()
@@ -40,6 +46,7 @@ function test.testGetDiet()
 end
 
 function test.testGetDietStrings()
+	_G['locale'] = 'enUS'
 	lu.assertEquals({'Meat'}, LibPet.getDietStrings(26))
     _G['locale'] = 'deDE'
     lu.assertEquals({'Fleisch'}, LibPet.getDietStrings(26))
