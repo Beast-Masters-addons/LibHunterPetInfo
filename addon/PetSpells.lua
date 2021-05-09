@@ -91,6 +91,9 @@ function PetSpells.idToName(localize)
     return idNames
 end
 
+---Check if the given spell is learnable by the given family
+---@param spellIcon string
+---@param family number
 function PetSpells.learnableByFamily(spellIcon, family)
     local familyInfo = LibPet.familyInfo(family)
     for _, spellId in ipairs(familyInfo['spells']) do
@@ -107,6 +110,85 @@ function PetSpells.getFamilySpells(familyId)
     local spells = {}
     for _, spell in ipairs(familyInfo['spells']) do
         table.insert(spells, PetSpells.getSpellProperties(spell))
+    end
+    return spells
+end
+
+--/dump PetSpells.getPetsWithSpell(1754, 33)
+function PetSpells.getPetsWithSpell(spellId, zone)
+    assert(spellId>0, 'spellId is zero')
+    assert(zone>0, 'zone is zero')
+    --utils:printf('Get pets with spell %d in zone %d', spellId, zone)
+    local spell = PetSpells.getSpellProperties(spellId)
+    if spell['source'] == nil then
+        print('No source for spellId ' .. spellId)
+        return {}
+    end
+    if type(spell['source']) ~= 'table' then
+        utils:printf('%s source is %s', spellId, spell['source'])
+        --return spell['source']
+        return {}
+    end
+
+    assert(spell, 'No info found for spellId ' .. spellId)
+    local pets = {}
+    if zone == nil then
+        for _, petId in ipairs(spell['source']) do
+            table.insert(pets, LibPet.petProperties(petId))
+        end
+    else
+        for _, petId in ipairs(spell['source']) do
+            local petInfo = LibPet.petProperties(petId)
+            if petInfo ~= nil then
+                for _, zone_check in ipairs(petInfo['location']) do
+                    if zone_check == zone then
+                        table.insert(pets, petInfo)
+                    end
+                end
+            end
+        end
+    end
+    return pets
+end
+
+--/dump PetSpells.getKnownSpells()
+function PetSpells.getKnownSpells()
+    if (not _G.CraftFrame or not _G.CraftFrame:IsVisible()) then
+        --@debug@
+        print('CraftFrame is not active')
+        --@end-debug@
+        return
+    end
+    local numCrafts = _G.GetNumCrafts();
+
+    local spells = {}
+
+    for craftIndex = 1, numCrafts do
+        local craftName, rankText, craftType, _, _, trainingPointCost, requiredLevel = _G.GetCraftInfo(craftIndex);
+        if not rankText then
+            return
+        end
+        local _, _, rankNum = string.find(rankText, "(%d+)");
+        if (rankNum and tonumber(rankNum)) then
+            rankNum = tonumber(rankNum);
+        else
+            rankNum = 1
+        end
+
+        local spellIcon = PetSpells.getSpellIconFromTexture(_G.GetCraftIcon(craftIndex))
+        if spells[spellIcon] == nil then
+            spells[spellIcon] = {}
+        end
+
+        spells[spellIcon][rankNum] = {
+            ['spellIcon'] = spellIcon,
+            ['rankNun'] = rankNum,
+            ['spellname'] = craftName,
+            ['petKnows'] = craftType == 'used',
+            ['requiredLevel'] = requiredLevel,
+            ['trainingPointCost'] = trainingPointCost,
+            ['craftIndex'] = craftIndex
+        }
     end
     return spells
 end
