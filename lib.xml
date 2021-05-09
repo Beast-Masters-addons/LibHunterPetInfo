@@ -12,6 +12,8 @@
     <Script file="data\MapToZone.lua"/>
 
     <Script file="locale\PetDietLocale.lua"/>
+    <Script file="locale\PetFamilyNames.lua"/>
+    <Script file="addon\LocalizedTables.lua"/>
 
     <Script file="addon\PetDataTables.lua"/>
     <Script file="addon\BeastLore.lua"/>

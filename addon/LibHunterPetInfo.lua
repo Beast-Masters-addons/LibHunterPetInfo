@@ -20,12 +20,20 @@ function LibPet.getInfo(tableName, key, allow_missing)
 	return info
 end
 
+function LibPet.getFamilyNames()
+    return _G.LocalizedTables.getTable('PetFamilyNames')
+end
+
 function LibPet.familyInfo(familyId)
 	return LibPet.getInfo('Families', familyId)
 end
 
 function LibPet.familyName(familyId)
 	return LibPet.familyInfo(familyId)['name']
+end
+
+function LibPet.getLocalizedFamilyName(familyId)
+    return _G.LocalizedTables.getValue('PetFamilyNames', familyId)
 end
 
 function LibPet.getDiet(familyId)
