@@ -10,11 +10,16 @@ function ZoneInfo.getZoneInfo(zoneId)
 end
 
 function ZoneInfo.getZoneId(mapId)
-    return LibPet.getInfo('MapToZone', mapId)
+    local zoneId = LibPet.getInfo('MapToZone', mapId, true)
+    assert(zoneId, 'zoneId not found for mapId '..mapId)
+    return zoneId
 end
 
 function ZoneInfo.getCurrentZoneId()
     local mapId = _G.C_Map.GetBestMapForUnit("player")
+    if mapId == nil then
+        return
+    end
     return ZoneInfo.getZoneId(mapId)
 end
 
