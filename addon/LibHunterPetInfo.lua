@@ -80,10 +80,7 @@ function LibPet.zonePets(zoneId)
     end
 end
 
-function LibPet.getZoneByName(zoneName)
-    return LibPet.getInfo('ZonesNameToId', zoneName)
-end
-
+--/dump _G['LibPet'].petSkills(683)
 function LibPet.petSkills(npcId)
 	assert(npcId, 'Missing NPC id')
 	local skills = {}
@@ -118,6 +115,32 @@ function LibPet.levelRange(low, high, check)
     end
 end
 
+function LibPet.getClassificationString(classification)
+    if (classification == 1) then
+        -- Elite
+        return _G.ELITE
+    elseif (classification == 4) then
+        -- Rare
+        return _G.ITEM_QUALITY3_DESC
+    elseif (classification == 2) then
+        -- Rare Elite
+        return _G.ITEM_QUALITY3_DESC .. ' ' .. _G.ELITE
+    end
+end
+
+function LibPet.getClassificationDecoration(classification)
+    if (classification == 1) then
+        -- Elite
+        return "Interface\\DialogFrame\\UI-DialogBox-Gold-Dragon"
+    elseif (classification == 4) then
+        -- Rare
+        return "Interface\\AddOns\\GFW_HuntersHelperUI\\Rare"
+    elseif (classification == 2) then
+        -- Rare Elite
+        return "Interface\\AddOns\\GFW_HuntersHelperUI\\Rare-Elite"
+    end
+end
+
 function LibPet.petLevelString(petInfo)
 	local range = ''
 	if petInfo['minlevel'] ~= nil then
@@ -125,20 +148,13 @@ function LibPet.petLevelString(petInfo)
 	end
 
 	local classification = ''
-	if (petInfo['classification'] == 1) then
-		-- Elite
-		classification = _G.ELITE
-	elseif (petInfo['classification'] == 4) then
-		-- Rare
-		classification = _G.ITEM_QUALITY3_DESC
-	elseif (petInfo['classification'] == 2) then
-		-- Rare Elite
-		classification = _G.ITEM_QUALITY3_DESC .. ' ' .. _G.ELITE
-	end
+    if petInfo['classification'] > 0 then
+        classification = LibPet.getClassificationString(petInfo['classification'])
+    end
 
-	if classification ~= '' then
+	if classification ~= '' and range ~= '' then
 		return LibPet.utils:sprintf('%s (%s %s)', petInfo['name'], range, classification)
-	elseif range ~= '' then
+	elseif (range or classification) ~= '' then
 		return LibPet.utils:sprintf('%s (%s)', petInfo['name'], range or classification)
 	else
 		return petInfo['name']
