@@ -9,8 +9,10 @@ class Petopia(WoWBuildUtils):
     def __init__(self, tbc=False):
         super().__init__()
         if tbc:
+            print('Get Petopia TBC')
             self.abilities_url = 'https://www.wow-petopia.com/classic_bc/abilities.php'
         else:
+            print('Get Petopia Classic')
             self.abilities_url = 'https://www.wow-petopia.com/classic/abilities.php'
 
     def spells(self):
