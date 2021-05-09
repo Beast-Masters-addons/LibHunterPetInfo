@@ -21,3 +21,9 @@ end
 function ZoneInfo.getZoneName(zoneId)
     return _G.C_Map.GetAreaInfo(zoneId)
 end
+
+---Get zone id by english name
+---@param zoneName string
+function ZoneInfo.getZoneIdByName(zoneName)
+    return LibPet.getInfo('ZonesNameToId', zoneName)
+end
