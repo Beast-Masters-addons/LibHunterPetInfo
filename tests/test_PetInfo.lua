@@ -59,7 +59,8 @@ function test.testPetLevelString()
 	lu.assertEquals('Highland Thrasher (34)', LibPet.petLevelString(LibPet.petProperties(2560)))
 	lu.assertEquals('Roc (|cffff202041|r-|cffff202043|r)', LibPet.petLevelString(LibPet.petProperties(5428)))
 	lu.assertEquals('Greater Firebird', LibPet.petLevelString(LibPet.petProperties(8207)))
-	lu.assertEquals('Zaricotl (|cffff20209999|r-|cffff20209999|r Rare Elite)', LibPet.petLevelString(LibPet.petProperties(2931)))
+	lu.assertEquals('Zaricotl (|cffff20209999|r-|cffff20209999|r Rare Elite)',
+			LibPet.petLevelString(LibPet.petProperties(2931)))
 end
 
 os.exit( lu.LuaUnit.run() )
