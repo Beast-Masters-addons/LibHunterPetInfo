@@ -57,10 +57,10 @@ class BuildPetData(Wowhead):
         spell_sources = self.petopia.spells()
 
         for spell in self.get_list_data(response, 'listviewspells'):
-            if 'chrclass' in spell:
-                if spell['chrclass'] != 4:
-                    continue
-                del spell['chrclass']
+            # if 'chrclass' in spell:
+            #     if spell['chrclass'] != 4:
+            #         continue
+            #     del spell['chrclass']
             del spell['popularity']
 
             if 'rank' in spell:
