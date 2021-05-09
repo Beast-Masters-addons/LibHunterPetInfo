@@ -4,17 +4,17 @@ LibPet.utils = _G['BMUtils']
 LibPet.utils = _G.LibStub("BM-utils-1")
 LibPet.tables = _G['PetInfo']
 
-function LibPet.getInfo(tableName, key)
+function LibPet.getInfo(tableName, key, allow_missing)
 	assert(type(key) ~= 'table', 'Key is table')
 	if not key then
-		error('Invalid key')
+        error('Empty key, table ' .. tableName)
 	end
 	local table = LibPet.tables[tableName]
 	if not table then
 		error(tableName..' is not a valid table name')
 	end
 	local info = table[key]
-	if not info then
+	if not info and not allow_missing then
 		error(key..' is not a valid key in table '..tableName)
 	end
 	return info
@@ -63,10 +63,8 @@ function LibPet.getFamilyInfoFromTexture(texture)
 end
 
 function LibPet.petProperties(id)
-    return LibPet.getInfo('PetProperties', id)
+    return LibPet.getInfo('PetProperties', id, true)
 end
-
-
 
 function LibPet.zonePets(zoneId)
     local pets = {}
