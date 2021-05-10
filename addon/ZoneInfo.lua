@@ -11,7 +11,11 @@ end
 
 function ZoneInfo.getZoneId(mapId)
     local zoneId = LibPet.getInfo('MapToZone', mapId, true)
-    assert(zoneId, 'zoneId not found for mapId '..mapId)
+    --@debug@
+    if zoneId == nil then
+        print(zoneId, 'zoneId not found for mapId '..mapId)
+    end
+    --@end-debug@
     return zoneId
 end
 
