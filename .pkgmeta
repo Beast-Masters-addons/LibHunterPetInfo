@@ -1,4 +1,6 @@
 package-as: LibHunterPetInfo
+enable-nolib-creation: yes
+
 externals:
   libs/LibStub:
     url: https://repos.wowace.com/wow/libstub/trunk
