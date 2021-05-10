@@ -45,8 +45,8 @@ script:
 after_success:
   - bash <(curl -s https://codecov.io/bash)
   - cd $TRAVIS_BUILD_DIR
-  - git add -f data
-  - git add -f locale
+  - git add -f data/*.lua
+  - git add -f locale/*.lua
   - curl -s https://raw.githubusercontent.com/BigWigsMods/packager/master/release.sh | bash -s -- -g $GAME_VERSION
 
 notifications:
