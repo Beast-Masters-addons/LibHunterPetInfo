@@ -64,6 +64,11 @@ function test.testLearnableByFamily()
     lu.assertEquals(status2, false)
 end
 
+function test.testLearnableByFamilies()
+    local families = PetSpells.learnableByFamilies('inv_weapon_shortblade_28')
+    lu.assertEquals(families, { 31, 5 })
+end
+
 function test.testGetFamilySpells()
     local spells = PetSpells.getFamilySpells(5)
     lu.assertEquals(spells[2]['id'], 23110)

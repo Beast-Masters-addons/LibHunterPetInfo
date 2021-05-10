@@ -105,6 +105,20 @@ function PetSpells.learnableByFamily(spellIcon, family)
     return false
 end
 
+function PetSpells.learnableByFamilies(spellIcon)
+    local families = {}
+    for familyId, familyInfo in pairs(LibPet.tables['Families']) do
+        for _, spellId_check in ipairs(familyInfo['spells']) do
+            local spellInfo = PetSpells.getSpellProperties(spellId_check)
+            if spellInfo['icon'] == spellIcon then
+                table.insert(families, familyId)
+                break
+            end
+        end
+    end
+    return families
+end
+
 function PetSpells.getFamilySpells(familyId)
     local familyInfo = LibPet.familyInfo(familyId)
     local spells = {}
