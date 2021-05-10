@@ -29,7 +29,7 @@ end
 function PetSpells.getSpellPropertiesByIcon(spellIcon, rank)
     local ranks = LibPet.tables['SpellRanks']
     assert(ranks[spellIcon], 'Unknown spell icon: ' .. spellIcon)
-    assert(ranks[spellIcon][rank], 'Invalid rank: ' .. rank)
+    assert(ranks[spellIcon][rank], ('Invalid rank %d for spell %s'):format(rank, spellIcon))
     local spellId = ranks[spellIcon][rank]
     return PetSpells.getSpellProperties(spellId)
 end
@@ -82,7 +82,12 @@ function PetSpells.idToName(localize)
         if spell['rank'] == 1 or spell['rank'] == nil then
             if localize then
                 local name = _G.GetSpellInfo(id)
-                idNames[name] = id
+                if name == nil then
+                    LibPet.utils:error('Name not found for spell with id ' .. id)
+                    idNames[spell['name']] = id
+                else
+                    idNames[name] = id
+                end
             else
                 idNames[spell['name']] = id
             end
