@@ -8,7 +8,7 @@ jobs:
         - export WOWHEAD_DOMAIN="classic"
     - name: 'TBC'
       install:
-        - export GAME_VERSION="bc"
+        - export GAME_VERSION="bcc"
         - export WOWHEAD_DOMAIN="tbc"
 
 cache:
