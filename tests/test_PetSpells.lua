@@ -66,17 +66,13 @@ end
 
 function test.testLearnableByFamilies()
     local families = PetSpells.learnableByFamilies('inv_weapon_shortblade_28')
-    lu.assertEquals(families, { 31, 5 })
+    lu.assertEquals(families, { 5, 31 })
 end
 
 function test.testGetFamilySpells()
     local spells = PetSpells.getFamilySpells(5)
-    lu.assertEquals(spells[2]['id'], 23110)
-    lu.assertEquals(spells[2]['icon'], 'ability_druid_dash')
-
---[[    local spells2 = PetSpells.getFamilySpells(4)
-    lu.assertEquals(spells2[2]['id'], 27049)
-    lu.assertEquals(spells2[2]['icon'], 'ability_druid_rake')]]
+    lu.assertEquals(spells[4]['id'], 23099)
+    lu.assertEquals(spells[4]['icon'], 'ability_druid_dash')
 end
 
 os.exit(lu.LuaUnit.run())
