@@ -1,6 +1,6 @@
 _G['LibPet'] = {}
 local LibPet = _G['LibPet']
-LibPet.version = '@project-version@ @game-type@'
+LibPet.version = '@project-version@@classic@'
 LibPet.utils = _G['BMUtils']
 LibPet.utils = _G.LibStub("BM-utils-1")
 LibPet.tables = _G['PetInfo']
