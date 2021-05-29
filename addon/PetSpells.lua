@@ -22,7 +22,10 @@ end
 
 function PetSpells.getSpellProperties(spellId)
     local properties = LibPet.getInfo('SpellProperties', spellId)
-    properties['name'] = _G.GetSpellInfo(properties['id'])
+    local localizedName = _G.GetSpellInfo(properties['id'])
+    if localizedName ~= nil then
+        properties['name'] = localizedName
+    end
     return properties
 end
 
