@@ -13,11 +13,11 @@ class BuildLocale(Wowhead):
 
     def pet_families(self, locale):
         families = {}
-        tables = BuildMapData()
+        tables = BuildMapData(locale=locale)
         if locale == 'enUS':
             locale = None
         try:
-            table = tables.get_db_table('creaturefamily', locale=locale)
+            table = tables.get_db_table('creaturefamily')
         except RuntimeError as e:
             print('Error %s for locale %s' % (e, locale))
             return
