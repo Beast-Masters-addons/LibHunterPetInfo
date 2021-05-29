@@ -65,7 +65,7 @@ end
 
 function PetSpells.generateNamesToIcons()
     local iconNames = {}
-    for icon, ranks in pairs(LibPet.tables['SpellRanks']) do
+    for icon, ranks in pairs(LibPet.getTable('SpellRanks')) do
         for _, spellId in pairs(ranks) do
             local name = _G.GetSpellInfo(spellId);
             if name ~= nil and not iconNames[name] then
@@ -78,7 +78,7 @@ end
 
 function PetSpells.idToName(localize)
     local idNames = {}
-    for id, spell in pairs(_G['PetSpellProperties']) do
+    for id, spell in pairs(LibPet.getTable('SpellProperties')) do
         if spell['rank'] == 1 or spell['rank'] == nil then
             if localize then
                 local name = _G.GetSpellInfo(id)

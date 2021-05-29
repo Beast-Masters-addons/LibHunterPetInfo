@@ -5,6 +5,11 @@ LibPet.utils = _G['BMUtils']
 LibPet.utils = _G.LibStub("BM-utils-1")
 LibPet.tables = _G['PetInfo']
 
+function LibPet.getTable(tableName)
+    assert(LibPet.tables[tableName], ('Invalid table name: %s'):format(tableName or 'nil'))
+    return LibPet.tables[tableName]
+end
+
 function LibPet.getInfo(tableName, key, allow_missing)
 	assert(type(key) ~= 'table', 'Key is table')
 	if not key then
@@ -89,7 +94,7 @@ end
 
 function LibPet.zonePets(zoneId)
     local pets = {}
-    for petId, petInfo in pairs(_G['PetProperties']) do
+    for petId, petInfo in pairs(LibPet.getTable('PetProperties')) do
         for _, location in ipairs(petInfo['location']) do
             if location == zoneId then
                 table.insert(pets, petId, petInfo)
