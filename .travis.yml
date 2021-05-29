@@ -36,6 +36,7 @@ before_script:
   - python scripts/BuildPetData.py
   - python scripts/BuildMapData.py
   - python scripts/BuildLocale.py
+  - python scripts/BuildFamilySpells.py
   - luacheck data --no-color -q --no-max-code-line-length
 
 script:

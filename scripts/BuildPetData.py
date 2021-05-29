@@ -18,12 +18,11 @@ class BuildPetData(Wowhead):
         families = self.get_list_view(response, 'pets')
 
         family_ids = []
-        pet_spells = []
 
         data_dict = {}
         for family in families:
             del family['popularity']
-            pet_spells.append(family['spells'])
+            del family['spells']
             family_ids.append(family['id'])
             family['icon_texture'] = textures[family['icon']]
             data_dict[family['id']] = family

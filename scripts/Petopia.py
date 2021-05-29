@@ -1,3 +1,4 @@
+import os
 import re
 
 from lxml import html as html
@@ -7,13 +8,16 @@ from build_utils import WoWBuildUtils
 
 class Petopia(WoWBuildUtils):
     def __init__(self, tbc=False):
-        super().__init__()
+        data_folder = os.path.join(os.path.dirname(__file__), '..', 'data')
+        super().__init__(data_folder)
         if tbc:
             print('Get Petopia TBC')
             self.abilities_url = 'https://www.wow-petopia.com/classic_bc/abilities.php'
+            self.families_url = 'https://www.wow-petopia.com/classic/'
         else:
             print('Get Petopia Classic')
             self.abilities_url = 'https://www.wow-petopia.com/classic/abilities.php'
+            self.families_url = 'https://www.wow-petopia.com/classic_bc/'
 
     def spells(self):
         response = self.get(self.abilities_url)
@@ -57,6 +61,28 @@ class Petopia(WoWBuildUtils):
                     npc_id = int(matches[1])
                     ability_ranks[icon][rank_num].append(npc_id)
         return ability_ranks
+
+    def families(self):
+        response = self.get(self.families_url)
+        root = html.fromstring(response.text)
+        family_links = []
+        links = root.xpath('.//a[contains(@href, "family.php")]')
+        for link in links:
+            family_links.append(self.families_url + link.attrib['href'])
+
+        return family_links
+
+    def family_spells(self, url):
+        response = self.get(url)
+        root = html.fromstring(response.text)
+        header = root.xpath('.//h1[@class="familyheadingname classic icon"]/img/@src')
+        family = os.path.basename(str(header[0])[:-4])
+        spell_list = []
+        spells = root.xpath('.//img[@class="familyabilityicon classic"]/@src')
+        for spell in spells:
+            spell = os.path.basename(str(spell)[:-4])
+            spell_list.append(spell)
+        return family, spell_list
 
 
 def parse_petopia():
