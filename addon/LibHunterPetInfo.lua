@@ -26,7 +26,9 @@ function LibPet.getFamilyNames()
 end
 
 function LibPet.familyInfo(familyId)
-	return LibPet.getInfo('Families', familyId)
+    local family = LibPet.getInfo('Families', familyId)
+    family['spells'] = LibPet.getInfo('FamilySpells', family['icon'])
+    return family
 end
 
 function LibPet.familyName(familyId)

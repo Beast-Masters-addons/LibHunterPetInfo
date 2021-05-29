@@ -101,8 +101,7 @@ end
 ---@param family number
 function PetSpells.learnableByFamily(spellIcon, family)
     local familyInfo = LibPet.familyInfo(family)
-    for _, spellId in ipairs(familyInfo['spells']) do
-        local icon = PetSpells.getSpellProperties(spellId)['icon']
+    for _, icon in ipairs(familyInfo['spells']) do
         if icon == spellIcon then
             return true
         end
@@ -128,7 +127,7 @@ function PetSpells.getFamilySpells(familyId)
     local familyInfo = LibPet.familyInfo(familyId)
     local spells = {}
     for _, spell in ipairs(familyInfo['spells']) do
-        table.insert(spells, PetSpells.getSpellProperties(spell))
+        table.insert(spells, PetSpells.getSpellPropertiesByIcon(spell, 1))
     end
     return spells
 end

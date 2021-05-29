@@ -2,6 +2,7 @@
 ..\FrameXML\UI.xsd">
     <Script file="data\PetFamilies.lua"/>
     <Script file="data\PetFamilyMembers.lua"/>
+    <Script file="data\PetFamilySpells.lua"/>
     <Script file="data\PetProperties.lua"/>
     <Script file="data\PetSpellRanks.lua"/>
     <Script file="data\PetAbilitySource.lua"/>

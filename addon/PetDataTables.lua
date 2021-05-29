@@ -3,6 +3,7 @@ _G['PetInfo'] = {
     Families = _G['PetFamilies'],
     PetProperties = _G['PetProperties'],
     PetFamilyMembers = _G['PetFamilyMembers'],
+    FamilySpells = _G['PetFamilySpells'],
     SpellIconTextures = _G['PetSpellIconTextures'],
     SpellProperties = _G['PetSpellProperties'],
     SpellRanks = _G['PetSpellRanks'],
