@@ -65,8 +65,15 @@ class BuildPetData(Wowhead):
             if 'rank' in spell:
                 matches = re.match(r'\w+\s([0-9]+)', spell['rank'])
                 if not matches:
-                    continue
-                spell['rank'] = int(matches.group(1))
+                    # Wowhead has no rank data for avoidance, check id and add here
+                    if spell['id'] == 35694:
+                        spell['rank'] = 1
+                    elif spell['id'] == 35698:
+                        spell['rank'] = 2
+                    else:
+                        continue
+                else:
+                    spell['rank'] = int(matches.group(1))
             spell['icon'] = spells[str(spell['id'])]['icon']
             spell['icon_texture'] = textures[spell['icon']]
             spell['passive'] = spell['icon'] in passive_spells
@@ -87,7 +94,8 @@ class BuildPetData(Wowhead):
         ranks = {}
 
         for spell_id, spell in spells.items():
-            if int(spell_id) not in valid_ids:
+            spell_id = int(spell_id)
+            if spell_id not in valid_ids:
                 continue
 
             icon = spell['icon']
@@ -98,13 +106,20 @@ class BuildPetData(Wowhead):
             else:
                 matches = re.match(r'\w+\s([0-9]+)', spell[rank_key])
                 if not matches:
-                    continue
-                rank = int(matches.group(1))
+                    # Wowhead has no rank data for avoidance, check id and add here
+                    if spell_id == 35694:
+                        rank = 1
+                    elif spell_id == 35698:
+                        rank = 2
+                    else:
+                        continue
+                else:
+                    rank = int(matches.group(1))
 
             if icon not in ranks:
                 ranks[icon] = {}
 
-            ranks[icon][rank] = int(spell_id)
+            ranks[icon][rank] = spell_id
         return ranks
 
     def pet_properties(self):
