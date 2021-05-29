@@ -29,7 +29,7 @@ end
 function PetSpells.getSpellPropertiesByIcon(spellIcon, rank)
     local ranks = LibPet.tables['SpellRanks']
     assert(ranks[spellIcon], 'Unknown spell icon: ' .. spellIcon)
-    assert(ranks[spellIcon][rank], ('Invalid rank %d for spell %s'):format(rank, spellIcon))
+    assert(ranks[spellIcon][rank], ('Invalid rank %d for spell %s'):format(rank or 0, spellIcon))
     local spellId = ranks[spellIcon][rank]
     return PetSpells.getSpellProperties(spellId)
 end
