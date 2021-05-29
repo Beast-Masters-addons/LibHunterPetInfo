@@ -81,6 +81,8 @@ class Petopia(WoWBuildUtils):
         spells = root.xpath('.//img[@class="familyabilityicon classic"]/@src')
         for spell in spells:
             spell = os.path.basename(str(spell)[:-4])
+            if spell == 'ability_druid_ferociousbite':
+                spell = 'ability_racial_cannibalize'
             spell_list.append(spell)
         return family, spell_list
 
