@@ -73,6 +73,16 @@ function LibPet.getFamilyInfoFromTexture(texture)
 	error('No pet family found with icon texture ' .. texture)
 end
 
+function LibPet.getFamilyInfoFromIcon(icon)
+    assert(icon, 'Icon is empty')
+    for _, family in pairs(LibPet.getTable('Families')) do
+        if family['icon'] == icon then
+            return family
+        end
+    end
+    error('No pet family found with icon ' .. icon)
+end
+
 function LibPet.petProperties(id)
     return LibPet.getInfo('PetProperties', id, true)
 end

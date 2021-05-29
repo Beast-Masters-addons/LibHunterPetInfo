@@ -111,11 +111,12 @@ end
 
 function PetSpells.learnableByFamilies(spellIcon)
     local families = {}
-    for familyId, familyInfo in pairs(LibPet.tables['Families']) do
-        for _, spellId_check in ipairs(familyInfo['spells']) do
-            local spellInfo = PetSpells.getSpellProperties(spellId_check)
+    for familyIcon, familySpells in pairs(LibPet.tables['FamilySpells']) do
+        local familyInfo = LibPet.getFamilyInfoFromIcon(familyIcon)
+        for _, spellIcon_check in ipairs(familySpells) do
+            local spellInfo = PetSpells.getSpellPropertiesByIcon(spellIcon_check, 1)
             if spellInfo['icon'] == spellIcon then
-                table.insert(families, familyId)
+                table.insert(families, familyInfo['id'])
                 break
             end
         end
