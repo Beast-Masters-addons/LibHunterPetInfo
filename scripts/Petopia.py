@@ -13,11 +13,11 @@ class Petopia(WoWBuildUtils):
         if tbc:
             print('Get Petopia TBC')
             self.abilities_url = 'https://www.wow-petopia.com/classic_bc/abilities.php'
-            self.families_url = 'https://www.wow-petopia.com/classic/'
+            self.families_url = 'https://www.wow-petopia.com/classic_bc/'
         else:
             print('Get Petopia Classic')
             self.abilities_url = 'https://www.wow-petopia.com/classic/abilities.php'
-            self.families_url = 'https://www.wow-petopia.com/classic_bc/'
+            self.families_url = 'https://www.wow-petopia.com/classic/'
 
     def spells(self):
         response = self.get(self.abilities_url)

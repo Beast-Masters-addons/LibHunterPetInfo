@@ -2,7 +2,7 @@ import os
 
 from Petopia import Petopia
 
-build = Petopia(os.getenv('WOWHEAD_DOMAIN') == 'tbc')
+build = Petopia(os.getenv('GAME_VERSION') == 'bcc')
 
 families = build.families()
 family_spells = {}
