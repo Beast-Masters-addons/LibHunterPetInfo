@@ -7,17 +7,23 @@ from build_utils import WoWBuildUtils
 
 
 class Petopia(WoWBuildUtils):
-    def __init__(self, tbc=False):
+    def __init__(self, game_version='classic'):
         data_folder = os.path.join(os.path.dirname(__file__), '..', 'data')
         super().__init__(data_folder)
-        if tbc:
+        if game_version == 'retail':
+            print('Get Petopia Retail')
+            self.abilities_url = 'https://www.wow-petopia.com/abilities.php'
+            self.families_url = 'https://www.wow-petopia.com/index.php'
+        elif game_version == 'bcc':
             print('Get Petopia TBC')
             self.abilities_url = 'https://www.wow-petopia.com/classic_bc/abilities.php'
             self.families_url = 'https://www.wow-petopia.com/classic_bc/'
-        else:
+        elif game_version == 'classic':
             print('Get Petopia Classic')
             self.abilities_url = 'https://www.wow-petopia.com/classic/abilities.php'
             self.families_url = 'https://www.wow-petopia.com/classic/'
+        else:
+            raise RuntimeError('Invalid game version: %s' % game_version)
 
     def spells(self):
         response = self.get(self.abilities_url)

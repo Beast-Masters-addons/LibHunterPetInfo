@@ -10,7 +10,7 @@ class BuildPetData(Wowhead):
     def __init__(self):
         data_folder = os.path.join(os.path.dirname(__file__), '..', 'data')
         super(BuildPetData, self).__init__(data_folder)
-        self.petopia = Petopia(os.getenv('WOWHEAD_DOMAIN') == 'tbc')
+        self.petopia = Petopia(os.getenv('GAME_VERSION'))
 
     def families(self):
         textures = self.art_textures()
