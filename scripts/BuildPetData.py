@@ -24,7 +24,10 @@ class BuildPetData(Wowhead):
             del family['popularity']
             del family['spells']
             family_ids.append(family['id'])
-            family['icon_texture'] = textures[family['icon']]
+            try:
+                family['icon_texture'] = textures[family['icon']]
+            except KeyError:
+                family['icon_texture'] = textures[family['icon'].replace('-', ' ')]
             data_dict[family['id']] = family
             diets = []
             for diet in [1, 2, 4, 8, 16, 32, 64, 128]:
