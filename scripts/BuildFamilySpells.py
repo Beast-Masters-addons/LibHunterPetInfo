@@ -2,7 +2,7 @@ import os
 
 from Petopia import Petopia
 
-build = Petopia(os.getenv('GAME_VERSION') == 'bcc')
+build = Petopia(os.getenv('GAME_VERSION'))
 
 families = build.families()
 family_spells = {}
