@@ -187,13 +187,21 @@ function PetSpells.getKnownSpells()
 
     for craftIndex = 1, numCrafts do
         local craftName, rankText, craftType, _, _, trainingPointCost, requiredLevel = _G.GetCraftInfo(craftIndex);
-        if not rankText then
-            return
-        end
-        local _, _, rankNum = string.find(rankText, "(%d+)");
-        if (rankNum and tonumber(rankNum)) then
-            rankNum = tonumber(rankNum);
+        local rankNum = 1
+        if rankText then
+            _, _, rankNum = string.find(rankText, "(%d+)");
+            if (rankNum and tonumber(rankNum)) then
+                rankNum = tonumber(rankNum)
+            else
+                --@debug@
+                print(('Unable to parse rank text %s for %s'):format(rankText, craftName))
+                --@end-debug
+                rankNum = 1
+            end
         else
+            --@debug@
+            print(('%s has no rank'):format(craftName))
+            --@end-debug
             rankNum = 1
         end
 
@@ -204,7 +212,7 @@ function PetSpells.getKnownSpells()
 
         spells[spellIcon][rankNum] = {
             ['spellIcon'] = spellIcon,
-            ['rankNun'] = rankNum,
+            ['rankNum'] = rankNum,
             ['spellname'] = craftName,
             ['petKnows'] = craftType == 'used',
             ['requiredLevel'] = requiredLevel,
