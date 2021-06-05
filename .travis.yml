@@ -8,12 +8,12 @@ jobs:
         - export WOWHEAD_DOMAIN="www"
 
     - name: 'Classic'
-      install:
+      before_install:
         - export GAME_VERSION="classic"
         - export WOWHEAD_DOMAIN="classic"
 
     - name: 'TBC'
-      install:
+      before_install:
         - export GAME_VERSION="bcc"
         - export WOWHEAD_DOMAIN="tbc"
 
@@ -27,7 +27,7 @@ addons:
     packages:
       - luarocks
 
-before_install:
+install:
   - sudo luarocks install luacheck
   - sudo luarocks install luaunit
   - sudo luarocks install luacov
