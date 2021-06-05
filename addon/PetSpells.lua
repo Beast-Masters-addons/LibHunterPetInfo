@@ -195,13 +195,13 @@ function PetSpells.getKnownSpells()
             else
                 --@debug@
                 print(('Unable to parse rank text %s for %s'):format(rankText, craftName))
-                --@end-debug
+                --@end-debug@
                 rankNum = 1
             end
         else
             --@debug@
             print(('%s has no rank'):format(craftName))
-            --@end-debug
+            --@end-debug@
             rankNum = 1
         end
 
