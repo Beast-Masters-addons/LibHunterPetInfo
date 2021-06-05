@@ -2,10 +2,16 @@ language: python
 
 jobs:
   include:
+    - name: 'Retail'
+      before_install:
+        - export GAME_VERSION="retail"
+        - export WOWHEAD_DOMAIN="www"
+
     - name: 'Classic'
       install:
         - export GAME_VERSION="classic"
         - export WOWHEAD_DOMAIN="classic"
+
     - name: 'TBC'
       install:
         - export GAME_VERSION="bcc"
