@@ -187,7 +187,7 @@ function PetSpells.getKnownSpells()
 
     for craftIndex = 1, numCrafts do
         local craftName, rankText, craftType, _, _, trainingPointCost, requiredLevel = _G.GetCraftInfo(craftIndex);
-        local rankNum = 1
+        local rankNum
         if rankText then
             _, _, rankNum = string.find(rankText, "(%d+)");
             if (rankNum and tonumber(rankNum)) then
