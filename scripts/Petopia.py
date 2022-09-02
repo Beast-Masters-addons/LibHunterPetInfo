@@ -13,7 +13,7 @@ class Petopia(WoWBuildUtils):
         if game_version == 'retail':
             print('Get Petopia Retail')
             self.abilities_url = 'https://www.wow-petopia.com/abilities.php'
-            self.families_url = 'https://www.wow-petopia.com/index.php'
+            self.families_url = 'https://www.wow-petopia.com'
         elif game_version == 'wrath':
             print('Get Petopia WotLK')
             self.abilities_url = 'https://www.wow-petopia.com/classic_lk/abilities.php'
@@ -74,7 +74,10 @@ class Petopia(WoWBuildUtils):
         return ability_ranks
 
     def families(self):
-        response = self.get(self.families_url)
+        if self.game_version != 'retail':
+            response = self.get(self.families_url)
+        else:
+            response = self.get('https://www.wow-petopia.com/index.php')
         root = html.fromstring(response.text)
         family_links = []
         links = root.xpath('.//a[contains(@href, "family.php")]')
@@ -88,6 +91,8 @@ class Petopia(WoWBuildUtils):
         root = html.fromstring(response.text)
         if self.game_version == 'wrath':
             header = root.xpath('.//h1[@class="familyheading classic lk icon"]/span/img/@src')
+        elif self.game_version == 'retail':
+            header = root.xpath('.//h1[@class="familyheadingname icon"]/img/@src')
         else:
             header = root.xpath('.//h1[@class="familyheadingname classic icon"]/img/@src')
         family = os.path.basename(str(header[0])[:-4])
@@ -95,6 +100,8 @@ class Petopia(WoWBuildUtils):
 
         if self.game_version == 'wrath':
             spells = root.xpath('.//img[@class="familyabilityicon classic lk"]/@src')
+        elif self.game_version == 'retail':
+            spells = root.xpath('.//img[@class="familyabilityicon"]/@src')
         else:
             spells = root.xpath('.//img[@class="familyabilityicon classic"]/@src')
         for spell in spells:
