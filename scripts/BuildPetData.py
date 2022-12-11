@@ -78,7 +78,12 @@ class BuildPetData(Wowhead):
                 else:
                     spell['rank'] = int(matches.group(1))
             spell['icon'] = spells[str(spell['id'])]['icon']
-            spell['icon_texture'] = textures[spell['icon']]
+            if spell['icon'] in textures:
+                spell['icon_texture'] = textures[spell['icon']]
+            else:
+                print('Texture for icon %s not found' % spell['icon'])
+                spell['icon_texture'] = None
+
             spell['passive'] = spell['icon'] in passive_spells
             try:
                 spell['source'] = spell_sources[spell['icon']][spell['rank']]
@@ -87,7 +92,8 @@ class BuildPetData(Wowhead):
                 pass
 
             properties[spell['id']] = spell
-            spell_icon_textures[spell['icon_texture']] = spell['icon']
+            if spell['icon_texture']:
+                spell_icon_textures[spell['icon_texture']] = spell['icon']
 
         return properties, spell_icon_textures, spell_sources
 
