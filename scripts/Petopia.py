@@ -18,6 +18,7 @@ class Petopia(WoWBuildUtils):
             print('Get Petopia WotLK')
             self.abilities_url = 'https://www.wow-petopia.com/classic_lk/abilities.php'
             self.families_url = 'https://www.wow-petopia.com/classic_lk/'
+            self.css_class = 'classic lk'
         elif game_version == 'bcc':
             print('Get Petopia TBC')
             self.abilities_url = 'https://www.wow-petopia.com/classic_bc/abilities.php'
@@ -26,6 +27,7 @@ class Petopia(WoWBuildUtils):
             print('Get Petopia Classic')
             self.abilities_url = 'https://www.wow-petopia.com/classic/abilities.php'
             self.families_url = 'https://www.wow-petopia.com/classic/'
+            self.css_class = 'classic'
         else:
             raise RuntimeError('Invalid game version: %s' % game_version)
         self.game_version = game_version
@@ -35,7 +37,7 @@ class Petopia(WoWBuildUtils):
         root = html.fromstring(response.text)
 
         ability_ranks = {}
-        abilities = root.xpath('//ul[@class="abilityranklist classic"]')
+        abilities = root.xpath('//ul[@class="abilityranklist %s"]' % self.css_class)
         for ability in abilities:
             # header = ability.find('h3[@class="guide_heading classic"]')
             icon = None
