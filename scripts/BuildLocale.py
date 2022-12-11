@@ -1,6 +1,7 @@
 import os
 
 from BuildMapData import BuildMapData
+from build_utils.utils.tables import WoWTablesCustom as WoWTables
 from build_utils.utils.Wowhead import Wowhead
 
 
@@ -13,7 +14,7 @@ class BuildLocale(Wowhead):
 
     def pet_families(self, locale):
         families = {}
-        tables = BuildMapData(locale=locale)
+        tables = WoWTables(locale=locale)
         if locale == 'enUS':
             locale = None
         try:

@@ -1,6 +1,6 @@
 import os
 
-from build_utils import BuildMapData
+from build_utils.utils.BuildMapData import BuildMapData
 
 data_folder = os.path.join(os.path.dirname(__file__), '..', 'data')
 build = BuildMapData(data_folder=data_folder)
