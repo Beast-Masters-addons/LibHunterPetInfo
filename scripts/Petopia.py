@@ -10,6 +10,7 @@ class Petopia(WoWBuildUtils):
     def __init__(self, game_version='classic'):
         data_folder = os.path.join(os.path.dirname(__file__), '..', 'data')
         super().__init__(data_folder)
+        self.css_class = 'classic'
         if game_version == 'retail':
             print('Get Petopia Retail')
             self.abilities_url = 'https://www.wow-petopia.com/abilities.php'
@@ -27,7 +28,6 @@ class Petopia(WoWBuildUtils):
             print('Get Petopia Classic')
             self.abilities_url = 'https://www.wow-petopia.com/classic/abilities.php'
             self.families_url = 'https://www.wow-petopia.com/classic/'
-            self.css_class = 'classic'
         else:
             raise RuntimeError('Invalid game version: %s' % game_version)
         self.game_version = game_version
