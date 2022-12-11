@@ -10,5 +10,7 @@ externals:
     tag: v1.5.1
 
 ignore:
+  - libs/BM-utils/tests
+  - libs/LibStub/tests
   - tests
   - scripts
