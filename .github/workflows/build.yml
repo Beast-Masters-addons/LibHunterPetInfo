@@ -61,7 +61,7 @@ jobs:
           git add -f locale/*.lua
 
       - name: WoW Packager
-        uses: BigWigsMods/packager@v2.0.9
+        uses: BigWigsMods/packager@v2.1.0
         with:
           args: -g ${{ matrix.game_version }}
 
