@@ -24,6 +24,7 @@ jobs:
       WOWI_API_TOKEN: ${{ secrets.WOWI_API_TOKEN }}
       GITHUB_OAUTH: ${{ secrets.GITHUB_TOKEN }}
       WAGO_API_TOKEN: ${{ secrets.WAGO_API_TOKEN }}
+      WOW_TOOLS: ${{ secrets.WOW_TOOLS }}
 
     steps:
       - name: Checkout addon
