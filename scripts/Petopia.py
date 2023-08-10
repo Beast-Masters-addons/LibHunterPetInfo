@@ -3,7 +3,7 @@ import re
 
 from lxml import html as html
 
-from build_utils.utils import WoWBuildUtils
+from build_utils.utils.tables.WoWBuildUtils import WoWBuildUtils
 
 
 class Petopia(WoWBuildUtils):
