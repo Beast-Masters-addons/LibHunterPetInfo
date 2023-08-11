@@ -1,7 +1,7 @@
 import os
 
 from BuildMapData import BuildMapData
-from build_utils.utils.tables import WoWTablesCustom as WoWTables
+from build_utils.utils.tables import WoWTables
 from build_utils.utils.Wowhead import Wowhead
 
 
@@ -38,6 +38,13 @@ class BuildLocale(Wowhead):
             diet_names[int(key)] = name
 
         return diet_names
+
+    def areas(self, locale):
+        tables = BuildMapData(locale=locale)
+        area_table = tables.get_db_table('areatable')
+        for area in area_table.items():
+            print(area)
+            pass
 
 
 if __name__ == '__main__':
