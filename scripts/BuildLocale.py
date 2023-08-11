@@ -14,7 +14,8 @@ class BuildLocale(Wowhead):
 
     def pet_families(self, locale):
         families = {}
-        tables = WoWTables(locale=locale)
+        version = os.getenv('GAME_VERSION')
+        tables = WoWTables(locale=locale, game=version)
         if locale == 'enUS':
             locale = None
         try:
