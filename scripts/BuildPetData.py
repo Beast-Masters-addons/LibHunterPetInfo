@@ -151,7 +151,7 @@ class BuildPetData(Wowhead):
 
     def zones(self):
         response = self.query(uri='/zones')
-        zones = self.get_list_view(response, 'zones')
+        zones = self.get_json_listview(response, 'zones')
         zones_out = {}
         zones_name_to_id = {}
         for zone in zones:

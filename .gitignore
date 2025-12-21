@@ -2,7 +2,6 @@
 release
 .release
 *.out
-build_utils
 
 __pycache__
 data/*
