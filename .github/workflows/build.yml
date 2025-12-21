@@ -18,7 +18,7 @@ jobs:
       max-parallel: 1
       fail-fast: false
       matrix:
-        game_version: [ 'classic', 'wrath', 'retail' ]
+        game_version: [ 'classic', 'bcc', 'wrath', 'mists', 'retail' ]
 
     env:
       CF_API_KEY: ${{ secrets.CF_API_KEY }}
@@ -63,11 +63,12 @@ jobs:
           git add -f locale/*.lua
 
       - name: WoW Packager
-        uses: BigWigsMods/packager@v2.1.0
+        uses: BigWigsMods/packager@v2.5.1
         with:
           args: -g ${{ matrix.game_version }}
 
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v6
         with:
-          name: LibHunterPetInfo-${{ matrix.game_version }}
-          path: .release
+          name: LibHunterPetInfo-${{ matrix.game_version }} ${{ github.head_ref || github.ref_name }}
+          path: ${{ github.workspace }}/.release
+          include-hidden-files: true
