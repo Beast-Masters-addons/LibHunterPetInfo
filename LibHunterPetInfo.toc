@@ -10,4 +10,9 @@
 libs\LibStub\LibStub.lua
 libs\BM-utils\lib.xml
 #@end-no-lib-strip@
+data\classic.xml [AllowLoadGameType vanilla]
+data\bcc.xml [AllowLoadGameType tbc]
+data\wrath.xml [AllowLoadGameType wrath]
+data\mists.xml [AllowLoadGameType mists]
+data\retail.xml [AllowLoadGameType mainline]
 lib.xml

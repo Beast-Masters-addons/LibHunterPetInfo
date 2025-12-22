@@ -7,30 +7,29 @@ from build_utils.utils.tables.WoWBuildUtils import WoWBuildUtils
 
 
 class Petopia(WoWBuildUtils):
-    def __init__(self, game_version='classic'):
-        data_folder = os.path.join(os.path.dirname(__file__), '..', 'data')
+    def __init__(self):
+        data_folder = os.path.join(os.path.dirname(__file__), '..', 'data', os.getenv('GAME_VERSION'))
         super().__init__(data_folder)
         self.css_class = 'classic'
-        if game_version == 'retail':
+        if self.game_version == 'retail':
             print('Get Petopia Retail')
             self.abilities_url = 'https://www.wow-petopia.com/abilities.php'
             self.families_url = 'https://www.wow-petopia.com'
-        elif game_version == 'wrath':
+        elif self.game_version == 'wrath':
             print('Get Petopia WotLK')
             self.abilities_url = 'https://www.wow-petopia.com/classic_lk/abilities.php'
             self.families_url = 'https://www.wow-petopia.com/classic_lk/'
             self.css_class = 'classic lk'
-        elif game_version == 'bcc':
+        elif self.game_version == 'bcc':
             print('Get Petopia TBC')
             self.abilities_url = 'https://www.wow-petopia.com/classic_bc/abilities.php'
             self.families_url = 'https://www.wow-petopia.com/classic_bc/'
-        elif game_version == 'classic':
+        elif self.game_version == 'classic':
             print('Get Petopia Classic')
             self.abilities_url = 'https://www.wow-petopia.com/classic/abilities.php'
             self.families_url = 'https://www.wow-petopia.com/classic/'
         else:
-            raise RuntimeError('Invalid game version: %s' % game_version)
-        self.game_version = game_version
+            raise RuntimeError('Petopia link not found for game version "%s"' % self.game_version)
 
     def spells(self):
         response = self.get(self.abilities_url)

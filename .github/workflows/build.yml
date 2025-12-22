@@ -31,12 +31,6 @@ jobs:
       - name: Checkout addon
         uses: actions/checkout@v3
 
-      - name: Get build utils
-        uses: actions/checkout@v3
-        with:
-          repository: Beast-Masters-addons/build_utils
-          path: scripts/build_utils
-
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
@@ -46,21 +40,6 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r scripts/requirements.txt
-
-      - name: Get data
-        run: |
-          python BuildPetData.py
-          python BuildMapData.py
-          python BuildLocale.py
-          python BuildFamilySpells.py
-        working-directory: scripts
-        env:
-          GAME_VERSION: ${{ matrix.game_version }}
-
-      - name: Add data
-        run: |
-          git add -f data/*.lua
-          git add -f locale/*.lua
 
       - name: WoW Packager
         uses: BigWigsMods/packager@v2.5.1

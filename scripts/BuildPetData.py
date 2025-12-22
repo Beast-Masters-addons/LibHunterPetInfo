@@ -8,9 +8,9 @@ from build_utils.utils.Wowhead import Wowhead
 
 class BuildPetData(Wowhead):
     def __init__(self):
-        data_folder = os.path.join(os.path.dirname(__file__), '..', 'data')
+        data_folder = os.path.join(os.path.dirname(__file__), '..', 'data', os.getenv('GAME_VERSION'))
         super(BuildPetData, self).__init__(data_folder)
-        self.petopia = Petopia(os.getenv('GAME_VERSION'))
+        self.petopia = Petopia()
 
     def families(self):
         textures = self.art_textures()

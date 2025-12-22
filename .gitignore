@@ -4,6 +4,6 @@ release
 *.out
 
 __pycache__
-data/*
-locale/*
 libs
+*.json
+.env

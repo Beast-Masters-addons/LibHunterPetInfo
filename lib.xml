@@ -1,19 +1,5 @@
 <Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/
 ..\FrameXML\UI.xsd">
-    <Script file="data\PetFamilies.lua"/>
-    <Script file="data\PetFamilyMembers.lua"/>
-    <Script file="data\PetFamilySpells.lua"/>
-    <Script file="data\PetProperties.lua"/>
-    <Script file="data\PetSpellRanks.lua"/>
-    <Script file="data\PetAbilitySource.lua"/>
-    <Script file="data\PetSpellProperties.lua"/>
-    <Script file="data\PetSpellIconTextures.lua"/>
-    <Script file="data\ZoneData.lua"/>
-    <Script file="data\ZonesNameToId.lua"/>
-    <Script file="data\MapToZone.lua"/>
-
-    <Script file="locale\PetDietLocale.lua"/>
-    <Script file="locale\PetFamilyNames.lua"/>
     <Script file="addon\LocalizedTables.lua"/>
 
     <Script file="addon\PetDataTables.lua"/>
@@ -23,5 +9,4 @@
     <Script file="addon\PetSpells.lua"/>
     <Script file="addon\CurrentPet.lua"/>
     <Script file="addon\ZoneInfo.lua"/>
-    <Script file="data\PetFamilies.lua"/>
 </Ui>

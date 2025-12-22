@@ -1,8 +1,6 @@
-import os
-
 from Petopia import Petopia
 
-build = Petopia(os.getenv('GAME_VERSION'))
+build = Petopia()
 
 families = build.families()
 family_spells = {}
