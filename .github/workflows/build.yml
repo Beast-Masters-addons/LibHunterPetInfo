@@ -18,7 +18,7 @@ jobs:
       max-parallel: 1
       fail-fast: false
       matrix:
-        game_version: [ 'classic', 'bcc', 'wrath', 'mists', 'retail' ]
+        game_version: [ 'classic', 'bcc', 'wrath', 'retail' ]
 
     env:
       CF_API_KEY: ${{ secrets.CF_API_KEY }}
