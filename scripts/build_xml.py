@@ -2,10 +2,10 @@ from pathlib import Path
 
 from build_utils.utils import WowXML
 
-project_root = Path(__file__).parent.parent
+data_folder = Path(__file__).parent.parent.joinpath('data')
 
 game_folder: Path
-for game_folder in project_root.joinpath('data').iterdir():
+for game_folder in data_folder.iterdir():
     if not game_folder.is_dir():
         continue
     file: Path
@@ -14,6 +14,6 @@ for game_folder in project_root.joinpath('data').iterdir():
         if file.suffix != '.lua':
             continue
 
-        rel = file.relative_to(project_root)
+        rel = file.relative_to(data_folder)
         xml.script(str(rel))
-    xml.save(project_root.joinpath('data', '%s.xml' % game_folder.name))
+    xml.save(data_folder.joinpath('%s.xml' % game_folder.name))
